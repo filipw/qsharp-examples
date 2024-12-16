@@ -4,10 +4,9 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit_aer import AerSimulator
 import qsharp
 
-# ANSI color codes
 class Colors:
-    GREEN = '\033[32m'
     RED = '\033[31m'
+    GREEN = '\033[32m'
     YELLOW = '\033[33m'
     BLUE = '\033[34m'
     MAGENTA = '\033[35m'
@@ -110,19 +109,19 @@ def draw_christmas_tree(height: int, simulator: QuantumSimulator) -> None:
     """Draw a colorful tree with quantum decorations"""
     print(f"\n{Colors.BOLD}🎄 Quantum Christmas Tree! 🎄\n{Colors.RESET}")
     
-    # Draw star on top
+    # draw star on top
     padding = height - 1
     print(" " * padding + f"{Colors.YELLOW}★{Colors.RESET}")
     
-    # Draw the tree from top to bottom
+    # draw the tree from top to bottom
     for i in range(height):
         width = 2 * i + 1
         padding = height - i - 1
         
-        # Get quantum decorations and their types
+        # get quantum decorations and their types
         decorations, types = create_quantum_decorations(width, simulator)
         
-        # Create the row string
+        # create the row string
         row = " " * padding
         for j in range(width):
             if decorations[j]:
@@ -141,7 +140,7 @@ def draw_christmas_tree(height: int, simulator: QuantumSimulator) -> None:
         trunk_padding = height - trunk_width//2 - 1
         print(" " * trunk_padding + f"{Colors.MAGENTA}#{Colors.RESET}" * trunk_width)
 
-    # Draw base decorations
+    # draw base decorations
     base_width = height * 2 - 1
     print(" " * 0 + f"{Colors.GREEN}~{Colors.RESET}" * base_width)
     print(f"\n{Colors.BOLD}🎁 Happy Quantum Holidays! 🎁{Colors.RESET}\n")
@@ -149,9 +148,9 @@ def draw_christmas_tree(height: int, simulator: QuantumSimulator) -> None:
 if __name__ == "__main__":
     tree_height = 12
     
-    # Try Q# first, fall back to Qiskit
+    # try Q# first, fall back to Qiskit if the file is not there
     try:
-        with open('tree2.qs', 'r') as file:
+        with open('tree.qs', 'r') as file:
             qs_content = file.read()
         simulator = QSharpSimulator(qs_content)
     except FileNotFoundError:
