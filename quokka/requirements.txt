@@ -1,0 +1,7 @@
+ipykernel
+python-dotenv
+matplotlib
+requests
+qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.2/qsharp_bridge-0.1.2-py3-none-linux_x86_64.whl; sys_platform == "linux"
+qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.2/qsharp_bridge-0.1.2-py3-none-macosx_11_0_universal2.whl; sys_platform == "darwin" 
+# qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.1/qsharp_bridge-0.1.0-cp39-cp39-win_amd64.whl; sys_platform == "win32"
