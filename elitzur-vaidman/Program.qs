@@ -104,7 +104,7 @@ operation AdvancedVariant(n : Int, iterations : Int) : Unit {
 
             let success = All(r -> r == Zero, alarmTriggered) and workingAlarmIdentified;
             if (success) {
-                set successes += 1;
+                successes += 1;
             }
         }
 
