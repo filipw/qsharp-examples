@@ -13,7 +13,7 @@ operation Execute(label : String, op : Unit => Bool) : Unit {
     mutable successCount = 0;
 
     for i in 1..runs {
-        successCount += op() ? 1 | 0;
+        set successCount += op() ? 1 | 0;
     }
 
     Message("");
@@ -21,7 +21,6 @@ operation Execute(label : String, op : Unit => Bool) : Unit {
     Message(DoubleAsStringWithPrecision(100. * IntAsDouble(successCount) / IntAsDouble(runs), 2) + " success rate");
     Message("");
     Message("***********");
-
 }
 
 operation Encode(register : Qubit[]) : Unit is Adj {
@@ -38,11 +37,13 @@ operation WithAuxAndManualMeasurement() : Bool {
 
     // encode it over three qubits
     Encode(register);
+    ApplyToEach(H, register);
 
     // simulate bit-flipping noise
     SimulateError(register);
 
     // transfer syndrome to auxilliary
+    ApplyToEach(H, register);
     CNOT(register[0], auxilliary[1]);
     CNOT(register[1], auxilliary[1]);
     CNOT(register[1], auxilliary[0]);
@@ -81,10 +82,12 @@ operation WithAuxAndAutomaticCorrection() : Bool {
 
     // encode it over three qubits
     Encode(register);
+    ApplyToEach(H, register);
 
     // simulate bit-flipping noise
     SimulateError(register);
 
+    ApplyToEach(H, register);
     // transfer syndrome to auxilliary
     CNOT(register[0], auxilliary[1]);
     CNOT(register[1], auxilliary[1]);
@@ -99,6 +102,7 @@ operation WithAuxAndAutomaticCorrection() : Bool {
     CCNOT(auxilliary[0], auxilliary[1], register[2]);
 
     // decode back
+    //ApplyToEachA(H, register);
     Adjoint Encode(register);
 
     // adjoint initial state to verify it went back to default
@@ -118,9 +122,11 @@ operation WithParityMeasurement() : Bool {
 
     // encode it over three qubits
     Encode(register);
+    ApplyToEach(H, register);
 
     // simulate bit-flipping noise
     SimulateError(register);
+    ApplyToEach(H, register);
 
     // parity measurements Z₀Z₁ and Z₁Z₂
     let parityResult01 = ResultAsBool(Measure([PauliZ, PauliZ, PauliI], register));
@@ -154,5 +160,5 @@ operation PrepareState(q : Qubit) : Unit is Adj + Ctl {
 
 operation SimulateError(register : Qubit[]) : Unit {
     let error = DrawRandomInt(0, 2);
-    X(register[error]);
+    Z(register[error]);
 }
