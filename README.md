@@ -7,7 +7,7 @@ A collection of various interesting Q# examples.
 | 💻 [Christmas Tree](./christmas-tree) | 📝 Decorating a Christmas tree with a quantum computer. Uses both Q# and Qiskit (Aer) simulators. | [Link](https://www.strathweb.com/2024/12/decorating-a-quantum-christmas-tree-with-qsharp-and-qiskit/) | Executable |
 | 💻 [Quokka](./quokka) | 📝 A Jupyter notebook showing how to run Q# code on a [Quokka](https://www.quokkacomputing.com/) quantum simulator. | [Link](https://strathweb.com/2025/03/running-qsharp-code-on-quokka/) | Jupyter Notebook |
 | 💻 [Array shuffle](./language/shuffle) | 📝 Shuffling an array using Q# (classical logic). | [Link](https://www.strathweb.com/2023/12/shuffling-an-array-in-qsharp/) | Executable |
-| 💻 [Certified deletion](./certified-deletion) | Q# sample illustrating [Quantum encryption with certified deletion](https://link.springer.com/chapter/10.1007/978-3-030-64381-2_4) from Anne Broadbent and Rabib Islam. | 📝 [Link](https://www.strathweb.com/2023/12/exploring-quantum-encryption-and-certified-deletion-with-qsharp/) | Executable |
+| 💻 [Certified deletion](./certified-deletion) | 📝 Q# sample illustrating [Quantum encryption with certified deletion](https://link.springer.com/chapter/10.1007/978-3-030-64381-2_4) from Anne Broadbent and Rabib Islam. | [Link](https://www.strathweb.com/2023/12/exploring-quantum-encryption-and-certified-deletion-with-qsharp/) | Executable |
 
 ## Further samples
 
