@@ -26,7 +26,7 @@ operation Shuffled<'T>(array : 'T[]) : 'T[] {
 
     for i in 0..arrayLength - 2 {
         let j = DrawRandomInt(i, arrayLength - 1);
-        set shuffled = Swapped(i, j, shuffled);
+        shuffled = Swapped(i, j, shuffled);
     }
 
     shuffled
@@ -44,15 +44,15 @@ operation BalancedBoolArrayV1(size : Int) : Bool[] {
         if trueCount < halfSize and falseCount < halfSize {
             let randomBit = DrawRandomInt(0, 1) == 1;
             if randomBit {
-                set trueCount += 1;
+                trueCount += 1;
             } else {
-                set falseCount += 1;
+                falseCount += 1;
             }
-            set resultArray += [randomBit];
+            resultArray += [randomBit];
         } elif trueCount >= halfSize {
-            set resultArray += [false];
+            resultArray += [false];
         } else {
-            set resultArray += [true];
+            resultArray += [true];
         }
     }
 
