@@ -11,6 +11,7 @@ A collection of various interesting Q# examples.
 | 💻 [Bit flip error correction](./error-correction/bitflip) | 📝 Bit flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
 | 💻 [Phase flip error correction](./error-correction/phaseflip) | 📝 Phase flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
 | 💻 [Elitzur-Vaidman tester](./elitzur-vaidman) | 📝 [Elitzur-Vaidman](https://arxiv.org/abs/hep-th/9305002) bomb tester thought experiment, as a playful Q# Santa-themed sample | [Link](https://www.strathweb.com/2022/12/q-holiday-calendar-2022-peeking-into-santas-gifts-with-q/) | Executable
+| 💻 [Hidden shift](./hidden-shift) | 📝 [Hidden shift](https://arxiv.org/abs/quant-ph/0211140) problem | N/A | Executable
 
 ## Further samples
 
