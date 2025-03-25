@@ -78,11 +78,10 @@ operation RunSimonsAlgorithm(secret : Bool[]) : Result[] {
 
     // reset all qubits.
     ResetAll(input + output);
-    return results;
+    results
 }
 
-@EntryPoint()
-operation Main() : Unit {
+operation Main() : Bool {
     // secret is "110"
     let secret = [true, true, false];
     Message("Running Simon's Algorithm with secret b = 110");
@@ -90,11 +89,15 @@ operation Main() : Unit {
     let measurement = RunSimonsAlgorithm(secret);
     Message($"Measured result from input register: {measurement}");
 
-    if DotProductMod2(secret, measurement) {
+    let verification = DotProductMod2(secret, measurement);
+
+    if verification {
         Message("The condition b ⋅ z = 0 (mod 2) is satisfied.");
     } else {
         Message("UH-OH! The condition b ⋅ z = 0 (mod 2) is NOT satisfied.");
     }
+
+    verification
 }
 
 function DotProductMod2(secret : Bool[], z : Result[]) : Bool {
@@ -104,5 +107,5 @@ function DotProductMod2(secret : Bool[], z : Result[]) : Bool {
     let and_result = b &&& z;
 
     // the dot product is 0 mod 2 if the number of 1 bits is even.
-    return (HammingWeightI(and_result) % 2 == 0);
+    HammingWeightI(and_result) % 2 == 0
 }
