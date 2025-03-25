@@ -98,11 +98,11 @@ operation Main() : Unit {
 }
 
 function DotProductMod2(secret : Bool[], z : Result[]) : Bool {
-    let bInt = BoolArrayAsInt(secret);
-    let zInt = ResultArrayAsInt(z);
+    let b = BoolArrayAsInt(secret);
+    let z = ResultArrayAsInt(z);
 
-    let andResult = bInt &&& zInt;
+    let and_result = b &&& z;
 
     // the dot product is 0 mod 2 if the number of 1 bits is even.
-    return (HammingWeightI(andResult) % 2 == 0);
+    return (HammingWeightI(and_result) % 2 == 0);
 }
