@@ -5,8 +5,8 @@ requests
 qiskit
 qiskit-aer
 qsharp
-qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.2/qsharp_bridge-0.1.3-py3-none-linux_x86_64.whl; sys_platform == "linux"
-qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.2/qsharp_bridge-0.1.3-py3-none-macosx_11_0_universal2.whl; sys_platform == "darwin" 
-qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.2/qsharp_bridge-0.1.3-py3-none-win_amd64.whl; sys_platform == "win32" and platform_machine == "AMD64"
+qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.3/qsharp_bridge-0.1.3-py3-none-linux_x86_64.whl; sys_platform == "linux"
+qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.3/qsharp_bridge-0.1.3-py3-none-macosx_11_0_universal2.whl; sys_platform == "darwin" 
+qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.3/qsharp_bridge-0.1.3-py3-none-win_amd64.whl; sys_platform == "win32" and platform_machine == "AMD64"
 qsharp_bridge @ https://github.com/qsharp-community/qsharp-bridge/releases/download/0.1.3/qsharp_bridge-0.1.3-py3-none-win_arm64.whl; sys_platform == "win32" and platform_machine == "ARM64"
 git+https://github.com/filipw/collapse.git#egg=collapse
