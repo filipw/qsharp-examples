@@ -46,7 +46,7 @@ operation Main() : Unit {
     // run the Hidden Shift algorithm
     mutable results = [];
     for _ in 1..sampleCount {
-        set results += [HiddenShiftAlgorithm(qubitCount, shift)];
+        results += [HiddenShiftAlgorithm(qubitCount, shift)];
     }
     
     // count occurrences of each result
@@ -64,7 +64,7 @@ operation Main() : Unit {
 operation GenerateRandomBitString(length : Int) : Bool[] {
     mutable bits = [];
     for _ in 1..length {
-        set bits += [DrawRandomBool(0.5)];
+        bits += [DrawRandomBool(0.5)];
     }
     bits
 }
@@ -84,10 +84,10 @@ function CountOccurrences(results : Bool[][]) : (Bool[], Int)[] {
     for result in results {
         let idx = IndexOf(r -> r == result, uniqueResults);
         if idx == -1 {
-            set uniqueResults += [result];
-            set counts += [1];
+            uniqueResults += [result];
+            counts += [1];
         } else {
-            set counts w/= idx <- counts[idx] + 1;
+            counts[idx] = counts[idx] + 1;
         }
     }
     
@@ -100,8 +100,8 @@ function FindMostCommon(frequencies : (Bool[], Int)[]) : (Bool[], Int) {
     
     for (result, count) in frequencies {
         if count > maxCount {
-            set maxCount = count;
-            set mostCommon = result;
+            maxCount = count;
+            mostCommon = result;
         }
     }
     

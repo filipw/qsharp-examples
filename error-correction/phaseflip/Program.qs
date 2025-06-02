@@ -13,7 +13,7 @@ operation Execute(label : String, op : Unit => Bool) : Unit {
     mutable successCount = 0;
 
     for i in 1..runs {
-        set successCount += op() ? 1 | 0;
+        successCount += op() ? 1 | 0;
     }
 
     Message("");

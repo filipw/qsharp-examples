@@ -47,22 +47,22 @@ operation SimpleVariant(iterations : Int) : Unit {
 
             // |00⟩ - inconclusive, Santa did not catch us
             if (not detector and not alarmTriggered) {
-                set results w/= 0 <- results[0] + 1;
+                results[0] = results[0] + 1;
             }
 
             // |01⟩ - inconclusive, Santa alerted
             if (not detector and alarmTriggered) {
-                set results w/= 1 <- results[1] + 1;
+                results[1] = results[1] + 1;
             }
 
             // |10⟩ - working alarm detected, Santa did not catch us
             if (detector and not alarmTriggered) {
-                set results w/= 2 <- results[2] + 1;
+                results[2] = results[2] + 1;
             }
 
             // |11⟩ - working alarm detected, Santa alerted
             if (detector and alarmTriggered) {
-                set results w/= 3 <- results[3] + 1;
+                results[3] = results[3] + 1;
             }
         }
         Message($"Alarm triggered: {results[1] + results[3]}");
@@ -96,7 +96,7 @@ operation AdvancedVariant(n : Int, iterations : Int) : Unit {
 
                 // we can now measure |00⟩ or |11⟩ only
                 // the probability amplitude of triggering the alarm (second qubit measures to |1⟩ is now sin(π/n)
-                set alarmTriggered w/= j <- MResetZ(q_alarm);
+                alarmTriggered[j] = MResetZ(q_alarm);
                 Reset(q_alarm);
             }
 
