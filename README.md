@@ -27,7 +27,7 @@ A collection of various interesting Q# examples.
 |-------------|-------------|-----------|------|
 | 💻 [Array shuffle](./language/shuffle) | 📝 Shuffling an array using Q# (classical logic). | [Link](https://www.strathweb.com/2023/12/shuffling-an-array-in-qsharp/) | Executable |
 | 💻 [New array update syntax](./language/arrays/) | 📝 The improved array update syntax introduced in Q# 1.17 | [Link](https://www.strathweb.com/2025/06/a-cat-jumped-on-a-keyboard-and-fixed-qsharp-array-syntax/) | Executable |
-
+| 💻 [Q# Testing (Bell state)](./language/tests/sample.qs) | 📝 Bell state tests demonstrating different Q# testing approaches | N/A | Tests |
 
 ## Further samples
 
