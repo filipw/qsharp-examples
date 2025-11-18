@@ -18,6 +18,11 @@ operation Main() : Result[] {
     ConfigurePauliNoise(0.01, 0.01, 0.01);
     // same: DepolarizingNoise(0.03)
 
+    // configure loss
+    // parameter represents probability of losing a qubit
+    // the returned Result is then "Loss"
+    ConfigureQubitLoss(0.01);
+
     // dump the current state of the machine
     DumpMachine();
 
