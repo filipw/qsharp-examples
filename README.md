@@ -17,7 +17,7 @@ A collection of various interesting Q# examples.
 
 | Sample Name | Description | Blog Post | Type |
 |-------------|-------------|-----------|------|
-| 💻 [Cat state with noise](./cat-state-with-noise/) | 📝 A simple 8-qubit GHZ state, with a basic noise model, illustrating its impact on measurement. Run with 1000 shots. | N/A | Executable
+| 💻 [Cat state with noise](./cat-state-with-noise/) | 📝 A simple 8-qubit GHZ state, with a basic noise model and, optionally, qubit loss, illustrating their impact on measurement. Run with 1000 shots. | N/A | Executable
 | 💻 [Bit flip error correction](./error-correction/bitflip) | 📝 Bit flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
 | 💻 [Phase flip error correction](./error-correction/phaseflip) | 📝 Phase flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
 
