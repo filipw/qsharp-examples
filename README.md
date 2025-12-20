@@ -12,6 +12,7 @@ A collection of various interesting Q# examples.
 | 💻 [Elitzur-Vaidman tester](./elitzur-vaidman) | 📝 [Elitzur-Vaidman](https://arxiv.org/abs/hep-th/9305002) bomb tester thought experiment, as a playful Q# Santa-themed sample | [Link](https://www.strathweb.com/2022/12/q-holiday-calendar-2022-peeking-into-santas-gifts-with-q/) | Executable
 | 💻 [Hidden shift](./hidden-shift) | 📝 [Hidden shift](https://arxiv.org/abs/quant-ph/0211140) problem | N/A | Executable
 | 💻 [Simon's algorithm](./simons-algorithm/) | 📝 A toy demonstration of [Simon's algorithm](https://epubs.siam.org/doi/10.1137/S0097539796298637) | N/A | Executable
+| 💻 [Certified randomness amplification](./certified-randomness) | 📝 Q# sample illustrating [Certified randomness amplification](https://arxiv.org/abs/2511.03686), Liu et al, arXiv:2511.03686, 2025. | [Link](https://strathweb.com/2025/12/certified-randomness-amplification-with-qsharp/) | Jupyter Notebook
 
 ## Errors
 
