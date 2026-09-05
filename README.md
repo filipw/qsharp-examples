@@ -13,6 +13,7 @@ A collection of various interesting Q# examples.
 | 💻 [Hidden shift](./hidden-shift) | 📝 [Hidden shift](https://arxiv.org/abs/quant-ph/0211140) problem | N/A | Executable
 | 💻 [Simon's algorithm](./simons-algorithm/) | 📝 A toy demonstration of [Simon's algorithm](https://epubs.siam.org/doi/10.1137/S0097539796298637) | N/A | Executable
 | 💻 [Certified randomness amplification](./certified-randomness) | 📝 Q# sample illustrating [Certified randomness amplification](https://arxiv.org/abs/2511.03686), Liu et al, arXiv:2511.03686, 2025. | [Link](https://strathweb.com/2025/12/certified-randomness-amplification-with-qsharp/) | Jupyter Notebook
+| 💻 [Composite qDRIFT](./composite-qdrift) | 📝 Q# implementation of the Hagan-Wiebe composite Trotter/qDRIFT channel, used to measure the cost objective of [Optimal Lower Bounds for Hamiltonian Simulation](https://arxiv.org/abs/2607.19852), Zlokapa, Allen and Harrow, arXiv:2607.19852, 2026, on power-law Hamiltonians with an exact channel evaluation. | [Link](https://www.strathweb.com/2026/09/where-to-cut-a-hamiltonian-composite-qdrift-with-qsharp/) | Executable
 
 ## Errors
 
