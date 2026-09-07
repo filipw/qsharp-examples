@@ -23,6 +23,7 @@ A collection of various interesting Q# examples.
 | 💻 [Cat state with noise](./cat-state-with-noise/) | 📝 A simple 8-qubit GHZ state, with a basic noise model and, optionally, qubit loss, illustrating their impact on measurement. Run with 1000 shots. | N/A | Executable
 | 💻 [Bit flip error correction](./error-correction/bitflip) | 📝 Bit flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
 | 💻 [Phase flip error correction](./error-correction/phaseflip) | 📝 Phase flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
+| 💻 [Magic rebirth](./magic-rebirth) | 📝 Q# demo of [Sudden death of entanglement, rebirth of magic](https://arxiv.org/abs/2605.22603), Cao, arXiv:2605.22603, 2026: amplitude damping of α\|0ⁿ⟩+β\|1ⁿ⟩ as an explicit Stinespring dilation, the magic-death, entanglement-death and magic-rebirth thresholds for n up to 8 with γₑ + γ₊ = 1 read off the environment register, a two-setting magic witness from shots, and parity-syndrome extraction of the reborn magic. Needs the `qdk` package. | N/A | Executable
 
 ## Language features
 
