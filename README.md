@@ -13,6 +13,8 @@ A collection of various interesting Q# examples.
 | 💻 [Hidden shift](./hidden-shift) | 📝 [Hidden shift](https://arxiv.org/abs/quant-ph/0211140) problem | N/A | Executable
 | 💻 [Simon's algorithm](./simons-algorithm/) | 📝 A toy demonstration of [Simon's algorithm](https://epubs.siam.org/doi/10.1137/S0097539796298637) | N/A | Executable
 | 💻 [Certified randomness amplification](./certified-randomness) | 📝 Q# sample illustrating [Certified randomness amplification](https://arxiv.org/abs/2511.03686), Liu et al, arXiv:2511.03686, 2025. | [Link](https://strathweb.com/2025/12/certified-randomness-amplification-with-qsharp/) | Jupyter Notebook
+| 💻 [Composite qDRIFT](./composite-qdrift) | 📝 Q# implementation of the Hagan-Wiebe composite Trotter/qDRIFT channel, used to measure the cost objective of [Optimal Lower Bounds for Hamiltonian Simulation](https://arxiv.org/abs/2607.19852), Zlokapa, Allen and Harrow, arXiv:2607.19852, 2026, on power-law Hamiltonians with an exact channel evaluation. | [Link](https://www.strathweb.com/2026/09/where-to-cut-a-hamiltonian-composite-qdrift-with-qsharp/) | Executable
+| 💻 [Stabilizer cloning](./stabilizer-cloning) | 📝 Bell difference sampling learner for stabilizer states on the QDK stabilizer simulator (up to 512 qubits), measuring the Θ(n) sample complexity of cloning from [Cloning is as Hard as Learning for Stabilizer States](https://arxiv.org/abs/2604.15269), Bansal, Caro and Mahajan, arXiv:2604.15269, 2026. Needs the `qdk` package (see its README). | [Link](https://www.strathweb.com/2026/09/cloning-is-as-hard-as-learning-stabilizer-states-with-qsharp/) | Executable
 
 ## Errors
 
@@ -21,6 +23,8 @@ A collection of various interesting Q# examples.
 | 💻 [Cat state with noise](./cat-state-with-noise/) | 📝 A simple 8-qubit GHZ state, with a basic noise model and, optionally, qubit loss, illustrating their impact on measurement. Run with 1000 shots. | N/A | Executable
 | 💻 [Bit flip error correction](./error-correction/bitflip) | 📝 Bit flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
 | 💻 [Phase flip error correction](./error-correction/phaseflip) | 📝 Phase flip error correction samples (auxiliary qubit-based syndrome extraction, automatic correction with auxiliary qubits and direct parity measurement) | N/A | Executable
+| 💻 [Magic rebirth](./magic-rebirth) | 📝 Q# demo of [Sudden death of entanglement, rebirth of magic](https://arxiv.org/abs/2605.22603), Cao, arXiv:2605.22603, 2026: amplitude damping of α\|0ⁿ⟩+β\|1ⁿ⟩ as an explicit Stinespring dilation, the magic-death, entanglement-death and magic-rebirth thresholds for n up to 8 with γₑ + γ₊ = 1 read off the environment register, a two-setting magic witness from shots, and parity-syndrome extraction of the reborn magic. Needs the `qdk` package. | N/A | Executable
+| 💻 [Steane rotations](./steane-rotations) | 📝 Q# demo of [Continuous-angle logical rotations in the Steane code](https://arxiv.org/abs/2608.20676), Huang, Zhu, Ippoliti, Monroe and Gullans, arXiv:2608.20676, 2026: a transversal Rz(θ) on the [[7,1,3]] code followed by X-syndrome extraction and correction is a logical Rz(φₛ) whose angle is set by the syndrome. The exact per-syndrome channel from Q# state dumps (angle, dephasing and probability against the paper's closed forms), logical Ramsey fringes and process tomography from shots, and the two-round +θ/−θ cancellation. Needs the `qdk` package. | N/A | Executable
 
 ## Language features
 

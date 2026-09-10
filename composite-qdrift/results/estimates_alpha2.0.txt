@@ -1,0 +1,19 @@
+alpha = 2.0, L = 400, t = 2.0; qubit model qubit_gate_ns_e4, surface code
+
+target trace distance 0.01
+  strategy   configuration               2q gates          D  phys qubits    T states      runtime
+  trotter    K=400 o=2 r=2                   5624   5.51e-03       29,400      24,180     64.74 ms
+  qdrift     N=316                           1255   7.15e-03       16,000       4,592      8.08 ms
+  composite  K=8 o=2 r=1 m=8                  157   9.66e-03       18,000         676      1.07 ms
+
+target trace distance 0.001
+  strategy   configuration               2q gates          D  phys qubits    T states      runtime
+  trotter    K=400 o=2 r=6                  16872   5.81e-04       24,800      86,616    295.83 ms
+  qdrift     N=3162                         12556   7.18e-04       31,360      57,132    145.37 ms
+  composite  K=8 o=2 r=4 m=8                  627   8.22e-04       31,360       2,580      6.45 ms
+
+target trace distance 0.0001
+  strategy   configuration               2q gates          D  phys qubits    T states      runtime
+  trotter    K=400 o=4 r=2                  28120   7.13e-05       48,600     160,240    544.51 ms
+  qdrift     N=31623                       125575   7.18e-05       77,440     664,335   2633.81 ms
+  composite  K=16 o=2 r=8 m=64               3830   8.90e-05       48,600      19,684     69.12 ms

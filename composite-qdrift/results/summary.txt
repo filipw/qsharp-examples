@@ -1,0 +1,67 @@
+
+alpha = 1.5   (L = 400, window with 2 <= K* <= L/4: 13 eps points)
+  slope of G(eps) in the window: measured envelope 0.70 | paper's objective 0.44 (p->inf limit 0.50) | order-2-explicit objective 0.76 (limit 0.75)
+  cut exponent K ~ eps^-q in the window: measured 0.32 | paper 0.49 (limit 0.50) | order-2 explicit 0.30
+        eps  best K  K* paper  K* ord2   envelope    Trotter      qDRIFT  vs Trotter  vs qDRIFT
+    1.0e-01       2         3        1         62         --          --          --          --
+    5.6e-02       4         4        1         89         --          --          --          --
+    3.2e-02       4         5        2        133         --          --          --          --
+    1.8e-02       8         7        2        200       3024         664       15.1x        3.3x
+    1.0e-02       8        10        2        285       3960        1189       13.9x        4.2x
+    5.6e-03       8        13        3        479       5187        2119       10.8x        4.4x
+    3.2e-03       8        17        3        644       6853        3776       10.6x        5.9x
+    1.8e-03      16        23        4        940       9094        6719        9.7x        7.2x
+    1.0e-03      16        30        5       1868      11801       11956        6.3x        6.4x
+    5.6e-04      16        39        5       1907      14885       21266        7.8x       11.2x
+    3.2e-04      16        50        6       3717      21464       37824        5.8x       10.2x
+    1.8e-04      16        65        7       4684      23627       67267        5.0x       14.4x
+    1.0e-04      32        83        8       7107      25055      119626        3.5x       16.8x
+    5.6e-05      32       104       10      14740      26568      212734        1.8x       14.4x
+    3.2e-05      32       130       11      14810      28243      378308        1.9x       25.5x
+    1.8e-05     400       161       13      36576      32360      672740        0.9x       18.4x
+    1.0e-05     400       195       15      39353      37076     1196325        0.9x       30.4x
+
+alpha = 2.0   (L = 400, window with 2 <= K* <= L/4: 19 eps points)
+  slope of G(eps) in the window: measured envelope 0.68 | paper's objective 0.33 (p->inf limit 0.33) | order-2-explicit objective 0.69 (limit 0.67)
+  cut exponent K ~ eps^-q in the window: measured 0.31 | paper 0.35 (limit 0.33) | order-2 explicit 0.20
+        eps  best K  K* paper  K* ord2   envelope    Trotter      qDRIFT  vs Trotter  vs qDRIFT
+    1.0e-01       1         2        1         40         --          --          --          --
+    5.6e-02       2         2        1         54         --          --          --          --
+    3.2e-02       2         3        1         74         --          --          --          --
+    1.8e-02       2         4        2        125       3370         500       26.9x        4.0x
+    1.0e-02       8         5        2        155       4334         894       28.0x        5.8x
+    5.6e-03       4         6        2        248       5574        1596       22.5x        6.4x
+    3.2e-03       8         7        2        290       7344        2844       25.3x        9.8x
+    1.8e-03       4         9        2        491       9712        5064       19.8x       10.3x
+    1.0e-03       8        11        3        621      12897        9010       20.8x       14.5x
+    5.6e-04       8        13        3        913      17153       16028       18.8x       17.6x
+    3.2e-04       8        16        3       1279      22597       28507       17.7x       22.3x
+    1.8e-04       8        19        4       1783      24590       50699       13.8x       28.4x
+    1.0e-04      16        24        4       2778      26758       90163        9.6x       32.5x
+    5.6e-05       8        29        5       3875      29780      160341        7.7x       41.4x
+    3.2e-05      16        34        5       5032      34223      285135        6.8x       56.7x
+    1.8e-05      64        42        6      24565      39328      507056        1.6x       20.6x
+    1.0e-05      32        50        6      25944      44723      901693        1.7x       34.8x
+    5.6e-06      32        60        7      27702      50319     1603458        1.8x       57.9x
+    3.2e-06      32        72        8      39694      59962     2851359        1.5x       71.8x
+
+alpha = 3.0   (L = 400, window with 2 <= K* <= L/4: 15 eps points)
+  slope of G(eps) in the window: measured envelope 0.56 | paper's objective 0.22 (p->inf limit 0.20) | order-2-explicit objective 0.63 (limit 0.60)
+  cut exponent K ~ eps^-q in the window: measured 0.27 | paper 0.21 (limit 0.20) | order-2 explicit 0.15
+        eps  best K  K* paper  K* ord2   envelope    Trotter      qDRIFT  vs Trotter  vs qDRIFT
+    5.6e-02       1         1        1         20         --          --          --          --
+    3.2e-02       1         2        1         26         --          --          --          --
+    1.8e-02       1         2        1         38         --          --          --          --
+    1.0e-02       1         2        1         64       3102         453       48.7x        7.1x
+    5.6e-03       2         3        1         74       3917         809       52.7x       10.9x
+    3.2e-03       2         3        1        106       4944        1443       46.7x       13.6x
+    1.8e-03       4         3        1        135       6349        2569       47.1x       19.1x
+    1.0e-03       2         4        2        253       8325        4573       32.9x       18.1x
+    5.6e-04       4         4        2        271      11006        8135       40.7x       30.1x
+    3.2e-04       2         5        2        504      14610       14471       29.0x       28.7x
+    1.8e-04       8         6        2        530      19421       25736       36.7x       48.6x
+    1.0e-04       4         6        2        636      23800       45771       37.4x       72.0x
+    5.6e-05       8         7        2       1044      26730       81397       25.6x       78.0x
+    3.2e-05       4         8        2       1295      30349      144751       23.4x      111.7x
+    1.8e-05       8         9        3       2055      34749      257410       16.9x      125.3x
+    1.0e-05       8        10        3       2348      39787      457752       16.9x      195.0x
