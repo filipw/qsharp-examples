@@ -1,0 +1,115 @@
+panel A/B exact channel, p=0.0: max |diff| from Eqs. 14-17: prob 1.2e-15, angle 2.9e-14, dephasing 1.1e-13; leakage 4.4e-16, non-Z-covariance 1.2e-15, spread over the 7 nontrivial syndromes 1.4e-16, non-unitarity 1.2e-15
+panel A/B exact channel, p=0.01: max |diff| from Eqs. 14-17: prob 1.4e-15, angle 2.6e-14, dephasing 2.2e-14; leakage 4.4e-16, non-Z-covariance 9.9e-16, spread over the 7 nontrivial syndromes 1.4e-16
+panel A/B exact channel, p=0.02: max |diff| from Eqs. 14-17: prob 2.1e-15, angle 1.2e-14, dephasing 1.3e-14; leakage 4.4e-16, non-Z-covariance 9.5e-16, spread over the 7 nontrivial syndromes 1.4e-16
+panel A/B exact channel, p=0.05: max |diff| from Eqs. 14-17: prob 1.9e-15, angle 1.5e-14, dephasing 3.4e-15; leakage 3.3e-16, non-Z-covariance 7.5e-16, spread over the 7 nontrivial syndromes 1.7e-16
+  theta = 0.0625 pi, p = 0: p_t = 0.9359, phi_t = -0.0043 pi, phi_n = +0.1875 pi
+  theta = 0.1250 pi, p = 0: p_t = 0.7812, phi_t = -0.0347 pi, phi_n = +0.3750 pi
+  theta = 0.2500 pi, p = 0: p_t = 0.5625, phi_t = -0.2500 pi, phi_n = +0.7500 pi  (T^dagger up to Z_L: phi_n - phi_t = 1 pi)
+  theta = 0.5000 pi, p = 0: p_t = 1.0000, phi_t = -0.5000 pi, phi_n = - (p_n = 0)
+panel B syndrome rates from shots: worst deviation from the exact probability 2.8 sigma over 48 trivial-syndrome rates (the nontrivial rate of a run is the complement)
+panel C Ramsey fringes: worst deviation from the exact channel 2.6 sigma over 91 points with a resolvable error bar; 7 points have every shot at the same outcome (exact P(X=+1) 1.00000, 1.00000, 1.00000, 0.99996, 0.00000, 0.99994, 0.99993); 2 class/angle combinations have no shots (a syndrome class of probability 0)
+panel A tomography from shots (p = 0.02), fitted angle / residual infidelity / dephasing vs exact:
+  theta = 0.05 pi, t: rate 0.8324 (exact 0.8327), phi -0.0106 +- 0.0044 pi (exact -0.0020), infidelity -0.0025 +- 0.0027 (exact 0.0001 = 2q/3), q -0.0038 +- 0.0040 (exact 0.0002)
+  theta = 0.05 pi, n: rate 0.1676 (exact 0.1673), phi +0.0206 +- 0.0112 pi (exact +0.0312), infidelity 0.0323 +- 0.0069 (exact 0.0524 = 2q/3), q 0.0484 +- 0.0103 (exact 0.0785)
+  theta = 0.10 pi, t: rate 0.7391 (exact 0.7398), phi -0.0116 +- 0.0046 pi (exact -0.0167), infidelity -0.0005 +- 0.0026 (exact 0.0007 = 2q/3), q -0.0007 +- 0.0039 (exact 0.0011)
+  theta = 0.10 pi, n: rate 0.2609 (exact 0.2602), phi +0.1337 +- 0.0108 pi (exact +0.1550), infidelity 0.0940 +- 0.0071 (exact 0.0911 = 2q/3), q 0.1410 +- 0.0106 (exact 0.1367)
+  theta = 0.15 pi, t: rate 0.6250 (exact 0.6250), phi -0.0561 +- 0.0046 pi (exact -0.0577), infidelity -0.0011 +- 0.0032 (exact 0.0030 = 2q/3), q -0.0016 +- 0.0048 (exact 0.0045)
+  theta = 0.15 pi, n: rate 0.3750 (exact 0.3750), phi +0.3157 +- 0.0101 pi (exact +0.3336), infidelity 0.1266 +- 0.0060 (exact 0.1265 = 2q/3), q 0.1898 +- 0.0090 (exact 0.1898)
+  theta = 0.20 pi, t: rate 0.5323 (exact 0.5321), phi -0.1313 +- 0.0044 pi (exact -0.1368), infidelity 0.0067 +- 0.0039 (exact 0.0075 = 2q/3), q 0.0100 +- 0.0059 (exact 0.0113)
+  theta = 0.20 pi, n: rate 0.4677 (exact 0.4679), phi +0.5424 +- 0.0107 pi (exact +0.5369), infidelity 0.1479 +- 0.0048 (exact 0.1475 = 2q/3), q 0.2218 +- 0.0073 (exact 0.2212)
+  theta = 0.25 pi, t: rate 0.5006 (exact 0.4966), phi -0.2525 +- 0.0048 pi (exact -0.2500), infidelity 0.0045 +- 0.0049 (exact 0.0105 = 2q/3), q 0.0068 +- 0.0073 (exact 0.0157)
+  theta = 0.25 pi, n: rate 0.4994 (exact 0.5034), phi +0.7582 +- 0.0090 pi (exact +0.7500), infidelity 0.1436 +- 0.0057 (exact 0.1543 = 2q/3), q 0.2154 +- 0.0085 (exact 0.2314)
+  worst deviation of the fitted angle or dephasing from the exact channel: 2.9 sigma over 20 comparisons
+  theta = 0: p=0.001: q_t = 7.02e-09 (7p^3 = 7.00e-09), q_n = 0.0030 (3p = 0.0030), p=0.01: q_t = 7.21e-06 (7p^3 = 7.00e-06), q_n = 0.0294 (3p = 0.0300), p=0.1: q_t = 9.50e-03 (7p^3 = 7.00e-03), q_n = 0.2440 (3p = 0.3000)
+panel B/C two rounds, p = 0.0, per syndrome pair (shots vs exact; the ideal angle is printed on the branch of the exact one):
+  theta = 0.000 pi tt: n = 30000, phi -0.0045 +- 0.0026 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact 0.0000), rate 1.0000 (exact 1.0000); 1.7 sigma
+  theta = 0.000 pi tn: n = 0, no estimate (exact rate 0.0000)
+  theta = 0.000 pi nt: n = 0, no estimate (exact rate 0.0000)
+  theta = 0.000 pi nn: n = 0, no estimate (exact rate 0.0000)
+  theta = 0.025 pi tt: n = 29341, phi -0.0031 +- 0.0026 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0000 (exact 0.0000), rate 0.9780 (exact 0.9787); 1.2 sigma
+  theta = 0.025 pi tn: n = 334, phi -0.0403 +- 0.0244 pi (exact -0.0753, ideal -0.0753), q 0.0020 +- 0.0077 (exact 0.0000), rate 0.0111 (exact 0.0106); 1.4 sigma
+  theta = 0.025 pi nt: n = 321, phi +0.1061 +- 0.0216 pi (exact +0.0753, ideal +0.0753), q -0.0157 +- 0.0147 (exact -0.0000), rate 0.0107 (exact 0.0106); 1.4 sigma
+  theta = 0.025 pi nn: n = 4, phi -0.1024 +- nan pi (exact +0.0000, ideal +0.0000), q -0.0270 +- nan (exact -0.0000), rate 0.0001 (exact 0.0001); 0.3 sigma
+  theta = 0.050 pi tt: n = 27499, phi +0.0005 +- 0.0027 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0000 (exact -0.0000), rate 0.9166 (exact 0.9182); 1.0 sigma
+  theta = 0.050 pi tn: n = 1235, phi -0.1478 +- 0.0105 pi (exact -0.1522, ideal -0.1522), q 0.0020 +- 0.0115 (exact 0.0000), rate 0.0412 (exact 0.0400); 1.0 sigma
+  theta = 0.050 pi nt: n = 1201, phi +0.1443 +- 0.0107 pi (exact +0.1522, ideal +0.1522), q 0.0007 +- 0.0114 (exact -0.0000), rate 0.0400 (exact 0.0400); 0.7 sigma
+  theta = 0.050 pi nn: n = 65, phi -0.0086 +- 0.0530 pi (exact +0.0000, ideal +0.0000), q -0.0002 +- 0.0023 (exact -0.0000), rate 0.0022 (exact 0.0017); 1.6 sigma
+  theta = 0.075 pi tt: n = 24882, phi -0.0040 +- 0.0028 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact -0.0000), rate 0.8294 (exact 0.8278); 1.4 sigma
+  theta = 0.075 pi tn: n = 2474, phi -0.2460 +- 0.0066 pi (exact -0.2324, ideal -0.2324), q 0.0057 +- 0.0102 (exact 0.0000), rate 0.0825 (exact 0.0820); 2.1 sigma
+  theta = 0.075 pi nt: n = 2386, phi +0.2259 +- 0.0068 pi (exact +0.2324, ideal +0.2324), q 0.0069 +- 0.0103 (exact 0.0000), rate 0.0795 (exact 0.0820); 1.6 sigma
+  theta = 0.075 pi nn: n = 258, phi -0.0390 +- 0.0274 pi (exact -0.0000, ideal +0.0000), q -0.0038 +- 0.0053 (exact 0.0000), rate 0.0086 (exact 0.0081); 1.4 sigma
+  theta = 0.100 pi tt: n = 21620, phi -0.0015 +- 0.0031 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0000 (exact -0.0000), rate 0.7207 (exact 0.7205); 0.5 sigma
+  theta = 0.100 pi tn: n = 3888, phi -0.3046 +- 0.0051 pi (exact -0.3176, ideal -0.3176), q -0.0120 +- 0.0073 (exact -0.0000), rate 0.1296 (exact 0.1283); 2.5 sigma
+  theta = 0.100 pi nt: n = 3843, phi +0.3171 +- 0.0056 pi (exact +0.3176, ideal +0.3176), q -0.0008 +- 0.0073 (exact 0.0000), rate 0.1281 (exact 0.1283); 0.1 sigma
+  theta = 0.100 pi nn: n = 649, phi -0.0029 +- 0.0174 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0002 (exact 0.0000), rate 0.0216 (exact 0.0228); 1.4 sigma
+  theta = 0.125 pi tt: n = 18256, phi +0.0018 +- 0.0033 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0000 (exact 0.0000), rate 0.6085 (exact 0.6104); 0.6 sigma
+  theta = 0.125 pi tn: n = 5134, phi -0.4120 +- 0.0059 pi (exact -0.4097, ideal -0.4097), q 0.0041 +- 0.0038 (exact 0.0000), rate 0.1711 (exact 0.1709); 1.1 sigma
+  theta = 0.125 pi nt: n = 5138, phi +0.4121 +- 0.0058 pi (exact +0.4097, ideal +0.4097), q -0.0006 +- 0.0036 (exact 0.0000), rate 0.1713 (exact 0.1709); 0.4 sigma
+  theta = 0.125 pi nn: n = 1472, phi +0.0061 +- 0.0118 pi (exact +0.0000, ideal +0.0000), q -0.0001 +- 0.0004 (exact 0.0000), rate 0.0491 (exact 0.0479); 1.0 sigma
+  theta = 0.150 pi tt: n = 15251, phi +0.0092 +- 0.0037 pi (exact +0.0000, ideal +0.0000), q -0.0002 +- 0.0002 (exact -0.0000), rate 0.5084 (exact 0.5093); 2.5 sigma
+  theta = 0.150 pi tn: n = 6158, phi -0.5138 +- 0.0057 pi (exact -0.5101, ideal -0.5101), q 0.0002 +- 0.0006 (exact -0.0000), rate 0.2053 (exact 0.2044); 0.6 sigma
+  theta = 0.150 pi nt: n = 6143, phi +0.5132 +- 0.0057 pi (exact +0.5101, ideal +0.5101), q -0.0004 +- 0.0004 (exact 0.0000), rate 0.2048 (exact 0.2044); 1.2 sigma
+  theta = 0.150 pi nn: n = 2448, phi +0.0030 +- 0.0090 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact 0.0000), rate 0.0816 (exact 0.0820); 0.3 sigma
+  theta = 0.175 pi tt: n = 12802, phi +0.0072 +- 0.0040 pi (exact +0.0000, ideal +0.0000), q -0.0001 +- 0.0001 (exact 0.0000), rate 0.4267 (exact 0.4260); 1.8 sigma
+  theta = 0.175 pi tn: n = 6816, phi -0.6190 +- 0.0048 pi (exact -0.6201, ideal -0.6201), q -0.0006 +- 0.0041 (exact 0.0000), rate 0.2272 (exact 0.2267); 0.2 sigma
+  theta = 0.175 pi nt: n = 6861, phi +0.6197 +- 0.0048 pi (exact +0.6201, ideal +0.6201), q 0.0065 +- 0.0043 (exact 0.0000), rate 0.2287 (exact 0.2267); 1.5 sigma
+  theta = 0.175 pi nn: n = 3521, phi -0.0123 +- 0.0076 pi (exact +0.0000, ideal +0.0000), q -0.0004 +- 0.0005 (exact 0.0000), rate 0.1174 (exact 0.1206); 1.8 sigma
+  theta = 0.200 pi tt: n = 10829, phi +0.0039 +- 0.0043 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact 0.0000), rate 0.3610 (exact 0.3652); 1.5 sigma
+  theta = 0.200 pi tn: n = 7163, phi -0.7376 +- 0.0038 pi (exact -0.7397, ideal -0.7397), q 0.0011 +- 0.0059 (exact 0.0000), rate 0.2388 (exact 0.2391); 0.6 sigma
+  theta = 0.200 pi nt: n = 7272, phi +0.7451 +- 0.0037 pi (exact +0.7397, ideal +0.7397), q -0.0022 +- 0.0058 (exact 0.0000), rate 0.2424 (exact 0.2391); 1.5 sigma
+  theta = 0.200 pi nn: n = 4736, phi -0.0042 +- 0.0065 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact 0.0000), rate 0.1579 (exact 0.1566); 0.7 sigma
+  theta = 0.225 pi tt: n = 9838, phi +0.0003 +- 0.0046 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0000 (exact 0.0000), rate 0.3279 (exact 0.3286); 0.2 sigma
+  theta = 0.225 pi tn: n = 7225, phi -0.8668 +- 0.0045 pi (exact -0.8675, ideal -0.8675), q -0.0027 +- 0.0043 (exact 0.0000), rate 0.2408 (exact 0.2446); 1.5 sigma
+  theta = 0.225 pi nt: n = 7474, phi +0.8763 +- 0.0045 pi (exact +0.8675, ideal +0.8675), q 0.0013 +- 0.0041 (exact 0.0000), rate 0.2491 (exact 0.2446); 1.9 sigma
+  theta = 0.225 pi nn: n = 5463, phi +0.0019 +- 0.0060 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact -0.0000), rate 0.1821 (exact 0.1822); 0.3 sigma
+  theta = 0.250 pi tt: n = 9447, phi -0.0035 +- 0.0046 pi (exact -0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact 0.0000), rate 0.3149 (exact 0.3164); 0.8 sigma
+  theta = 0.250 pi tn: n = 7332, phi -0.9995 +- 0.0052 pi (exact -1.0000, ideal -1.0000), q -0.0000 +- 0.0000 (exact 0.0000), rate 0.2444 (exact 0.2461); 0.7 sigma
+  theta = 0.250 pi nt: n = 7403, phi +0.9984 +- 0.0052 pi (exact +1.0000, ideal +1.0000), q -0.0000 +- 0.0000 (exact 0.0000), rate 0.2468 (exact 0.2461); 0.3 sigma
+  theta = 0.250 pi nn: n = 5818, phi -0.0021 +- 0.0059 pi (exact +0.0000, ideal +0.0000), q -0.0000 +- 0.0001 (exact 0.0000), rate 0.1939 (exact 0.1914); 1.1 sigma
+  worst deviation over angle, dephasing and rate: 2.5 sigma over 120 comparisons with a finite error bar (the four pair rates at one theta sum to 1)
+panel B/C two rounds, p = 0.02, per syndrome pair (shots vs exact; the ideal angle is printed on the branch of the exact one):
+  theta = 0.000 pi tt: n = 22505, phi -0.0037 +- 0.0030 pi (exact +0.0000, ideal +0.0000), q 0.0001 +- 0.0001 (exact 0.0001), rate 0.7502 (exact 0.7537); 1.4 sigma
+  theta = 0.000 pi tn: n = 3450, phi +0.0065 +- 0.0087 pi (exact +0.0000, ideal +0.0000), q 0.0594 +- 0.0057 (exact 0.0577), rate 0.1150 (exact 0.1144); 0.7 sigma
+  theta = 0.000 pi nt: n = 3517, phi -0.0084 +- 0.0084 pi (exact +0.0000, ideal +0.0000), q 0.0501 +- 0.0052 (exact 0.0577), rate 0.1172 (exact 0.1144); 1.5 sigma
+  theta = 0.000 pi nn: n = 528, phi -0.0272 +- 0.0248 pi (exact +0.0000, ideal +0.0000), q 0.1119 +- 0.0199 (exact 0.1086), rate 0.0176 (exact 0.0174); 1.1 sigma
+  theta = 0.025 pi tt: n = 22028, phi +0.0031 +- 0.0030 pi (exact -0.0000, ideal +0.0000), q 0.0001 +- 0.0001 (exact 0.0002), rate 0.7343 (exact 0.7380); 1.5 sigma
+  theta = 0.025 pi tn: n = 3642, phi +0.0056 +- 0.0087 pi (exact -0.0050, ideal -0.0753), q 0.0710 +- 0.0060 (exact 0.0623), rate 0.1214 (exact 0.1211); 1.5 sigma
+  theta = 0.025 pi nt: n = 3723, phi +0.0006 +- 0.0086 pi (exact +0.0050, ideal +0.0753), q 0.0714 +- 0.0060 (exact 0.0623), rate 0.1241 (exact 0.1211); 1.6 sigma
+  theta = 0.025 pi nn: n = 607, phi +0.0120 +- 0.0233 pi (exact +0.0000, ideal +0.0000), q 0.1097 +- 0.0181 (exact 0.1166), rate 0.0202 (exact 0.0199); 0.5 sigma
+  theta = 0.050 pi tt: n = 20777, phi +0.0065 +- 0.0031 pi (exact +0.0000, ideal +0.0000), q 0.0001 +- 0.0002 (exact 0.0003), rate 0.6926 (exact 0.6934); 2.1 sigma
+  theta = 0.050 pi tn: n = 4200, phi -0.0333 +- 0.0081 pi (exact -0.0333, ideal -0.1522), q 0.0733 +- 0.0059 (exact 0.0787), rate 0.1400 (exact 0.1393); 0.9 sigma
+  theta = 0.050 pi nt: n = 4240, phi +0.0443 +- 0.0081 pi (exact +0.0333, ideal +0.1522), q 0.0782 +- 0.0061 (exact 0.0787), rate 0.1413 (exact 0.1393); 1.4 sigma
+  theta = 0.050 pi nn: n = 783, phi -0.0086 +- 0.0208 pi (exact +0.0000, ideal +0.0000), q 0.1055 +- 0.0153 (exact 0.1448), rate 0.0261 (exact 0.0280); 2.6 sigma
+  theta = 0.075 pi tt: n = 18785, phi +0.0076 +- 0.0033 pi (exact -0.0000, ideal +0.0000), q 0.0004 +- 0.0003 (exact 0.0008), rate 0.6262 (exact 0.6266); 2.3 sigma
+  theta = 0.075 pi tn: n = 4998, phi -0.0855 +- 0.0074 pi (exact -0.0903, ideal -0.2324), q 0.0911 +- 0.0065 (exact 0.1060), rate 0.1666 (exact 0.1650); 2.3 sigma
+  theta = 0.075 pi nt: n = 4987, phi +0.1043 +- 0.0078 pi (exact +0.0903, ideal +0.2324), q 0.1120 +- 0.0071 (exact 0.1060), rate 0.1662 (exact 0.1650); 1.8 sigma
+  theta = 0.075 pi nn: n = 1230, phi +0.0298 +- 0.0224 pi (exact -0.0000, ideal +0.0000), q 0.2148 +- 0.0167 (exact 0.1891), rate 0.0410 (exact 0.0434); 2.1 sigma
+  theta = 0.100 pi tt: n = 16485, phi +0.0033 +- 0.0035 pi (exact -0.0000, ideal +0.0000), q 0.0012 +- 0.0004 (exact 0.0021), rate 0.5495 (exact 0.5473); 2.4 sigma
+  theta = 0.100 pi tn: n = 5758, phi -0.1660 +- 0.0075 pi (exact -0.1717, ideal -0.3176), q 0.1425 +- 0.0077 (exact 0.1375), rate 0.1919 (exact 0.1925); 0.8 sigma
+  theta = 0.100 pi nt: n = 5707, phi +0.1732 +- 0.0073 pi (exact +0.1717, ideal +0.3176), q 0.1371 +- 0.0078 (exact 0.1375), rate 0.1902 (exact 0.1925); 1.0 sigma
+  theta = 0.100 pi nn: n = 2050, phi +0.0287 +- 0.0209 pi (exact -0.0000, ideal +0.0000), q 0.2587 +- 0.0135 (exact 0.2360), rate 0.0683 (exact 0.0677); 1.7 sigma
+  theta = 0.125 pi tt: n = 14164, phi -0.0046 +- 0.0038 pi (exact +0.0000, ideal +0.0000), q 0.0052 +- 0.0009 (exact 0.0046), rate 0.4721 (exact 0.4656); 2.3 sigma
+  theta = 0.125 pi tn: n = 6514, phi -0.2712 +- 0.0076 pi (exact -0.2729, ideal -0.4097), q 0.1747 +- 0.0078 (exact 0.1672), rate 0.2171 (exact 0.2167); 1.0 sigma
+  theta = 0.125 pi nt: n = 6392, phi +0.2693 +- 0.0073 pi (exact +0.2729, ideal +0.4097), q 0.1616 +- 0.0077 (exact 0.1672), rate 0.2131 (exact 0.2167); 1.6 sigma
+  theta = 0.125 pi nn: n = 2930, phi +0.0291 +- 0.0174 pi (exact -0.0000, ideal +0.0000), q 0.2588 +- 0.0113 (exact 0.2764), rate 0.0977 (exact 0.1009); 1.9 sigma
+  theta = 0.150 pi tt: n = 11583, phi -0.0018 +- 0.0043 pi (exact -0.0000, ideal +0.0000), q 0.0089 +- 0.0012 (exact 0.0089), rate 0.3861 (exact 0.3906); 1.6 sigma
+  theta = 0.150 pi tn: n = 7146, phi -0.4104 +- 0.0087 pi (exact -0.3913, ideal -0.5101), q 0.1999 +- 0.0069 (exact 0.1926), rate 0.2382 (exact 0.2344); 2.2 sigma
+  theta = 0.150 pi nt: n = 7017, phi +0.3756 +- 0.0087 pi (exact +0.3913, ideal +0.5101), q 0.2036 +- 0.0072 (exact 0.1926), rate 0.2339 (exact 0.2344); 1.8 sigma
+  theta = 0.150 pi nn: n = 4254, phi -0.0116 +- 0.0184 pi (exact -0.0000, ideal +0.0000), q 0.3113 +- 0.0100 (exact 0.3075), rate 0.1418 (exact 0.1406); 0.6 sigma
+  theta = 0.175 pi tt: n = 9943, phi +0.0018 +- 0.0047 pi (exact -0.0000, ideal +0.0000), q 0.0144 +- 0.0017 (exact 0.0151), rate 0.3314 (exact 0.3285); 1.1 sigma
+  theta = 0.175 pi tn: n = 7324, phi -0.5458 +- 0.0092 pi (exact -0.5253, ideal -0.6201), q 0.2130 +- 0.0068 (exact 0.2127), rate 0.2441 (exact 0.2446); 2.2 sigma
+  theta = 0.175 pi nt: n = 7336, phi +0.5321 +- 0.0092 pi (exact +0.5253, ideal +0.6201), q 0.2143 +- 0.0068 (exact 0.2127), rate 0.2445 (exact 0.2446); 0.7 sigma
+  theta = 0.175 pi nn: n = 5397, phi +0.0116 +- 0.0189 pi (exact +0.0000, ideal +0.0000), q 0.3377 +- 0.0091 (exact 0.3298), rate 0.1799 (exact 0.1822); 1.0 sigma
+  theta = 0.200 pi tt: n = 8470, phi -0.0166 +- 0.0051 pi (exact +0.0000, ideal +0.0000), q 0.0192 +- 0.0022 (exact 0.0223), rate 0.2823 (exact 0.2831); 3.3 sigma
+  theta = 0.200 pi tn: n = 7586, phi -0.6707 +- 0.0086 pi (exact -0.6736, ideal -0.7397), q 0.2192 +- 0.0073 (exact 0.2275), rate 0.2529 (exact 0.2490); 1.6 sigma
+  theta = 0.200 pi nt: n = 7446, phi +0.6738 +- 0.0086 pi (exact +0.6736, ideal +0.7397), q 0.2168 +- 0.0073 (exact 0.2275), rate 0.2482 (exact 0.2490); 1.5 sigma
+  theta = 0.200 pi nn: n = 6498, phi +0.0030 +- 0.0172 pi (exact -0.0000, ideal +0.0000), q 0.3374 +- 0.0083 (exact 0.3446), rate 0.2166 (exact 0.2190); 1.0 sigma
+  theta = 0.225 pi tt: n = 7586, phi +0.0033 +- 0.0056 pi (exact -0.0000, ideal +0.0000), q 0.0325 +- 0.0029 (exact 0.0284), rate 0.2529 (exact 0.2557); 1.4 sigma
+  theta = 0.225 pi tn: n = 7544, phi -0.8339 +- 0.0092 pi (exact -0.8335, ideal -0.8675), q 0.2357 +- 0.0074 (exact 0.2367), rate 0.2515 (exact 0.2500); 0.6 sigma
+  theta = 0.225 pi nt: n = 7526, phi +0.8157 +- 0.0092 pi (exact +0.8335, ideal +0.8675), q 0.2350 +- 0.0075 (exact 0.2367), rate 0.2509 (exact 0.2500); 1.9 sigma
+  theta = 0.225 pi nn: n = 7344, phi +0.0098 +- 0.0191 pi (exact +0.0000, ideal +0.0000), q 0.3623 +- 0.0079 (exact 0.3530), rate 0.2448 (exact 0.2443); 1.2 sigma
+  theta = 0.250 pi tt: n = 7386, phi -0.0006 +- 0.0056 pi (exact +0.0000, ideal +0.0000), q 0.0294 +- 0.0028 (exact 0.0309), rate 0.2462 (exact 0.2466); 0.5 sigma
+  theta = 0.250 pi tn: n = 7445, phi +0.9802 +- 0.0100 pi (exact -1.0000, ideal -1.0000), q 0.2393 +- 0.0070 (exact 0.2398), rate 0.2482 (exact 0.2500); 2.0 sigma
+  theta = 0.250 pi nt: n = 7564, phi +0.9947 +- 0.0096 pi (exact +1.0000, ideal +1.0000), q 0.2304 +- 0.0069 (exact 0.2398), rate 0.2521 (exact 0.2500); 1.4 sigma
+  theta = 0.250 pi nn: n = 7605, phi -0.0184 +- 0.0168 pi (exact +0.0000, ideal +0.0000), q 0.3470 +- 0.0078 (exact 0.3557), rate 0.2535 (exact 0.2534); 1.1 sigma
+  worst deviation over angle, dephasing and rate: 3.3 sigma over 132 comparisons with a finite error bar (the four pair rates at one theta sum to 1)

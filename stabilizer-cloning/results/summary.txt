@@ -1,0 +1,23 @@
+copies-to-learn fit: 4.005 n + 7.06   (Lemma 5 predicts 4 n + 7.43)
+  n=   4: mean copies    22.7  median     21  predicted    23.2
+  n=   6: mean copies    31.3  median     29  predicted    31.4
+  n=   8: mean copies    38.4  median     37  predicted    39.4
+  n=  12: mean copies    55.0  median     53  predicted    55.4
+  n=  16: mean copies    71.6  median     69  predicted    71.4
+  n=  24: mean copies   103.6  median    101  predicted   103.4
+  n=  32: mean copies   135.8  median    133  predicted   135.4
+  n=  48: mean copies   199.4  median    197  predicted   199.4
+  n=  64: mean copies   263.0  median    261  predicted   263.4
+  n=  96: mean copies   391.2  median    389  predicted   391.4
+  n= 128: mean copies   519.9  median    517  predicted   519.4
+  n=   4: advantage at t=n measured 0.312, Lemma 5 0.278
+  n=   6: advantage at t=n measured 0.268, Lemma 5 0.273
+  n=   8: advantage at t=n measured 0.302, Lemma 5 0.272
+  n=  12: advantage at t=n measured 0.279, Lemma 5 0.271
+  n=  16: advantage at t=n measured 0.251, Lemma 5 0.271
+  n=  24: advantage at t=n measured 0.259, Lemma 5 0.271
+  n=  32: advantage at t=n measured 0.250, Lemma 5 0.271
+  n=  48: advantage at t=n measured 0.282, Lemma 5 0.271
+  n=  64: advantage at t=n measured 0.275, Lemma 5 0.271
+  n=  96: advantage at t=n measured 0.279, Lemma 5 0.271
+  n= 128: advantage at t=n measured 0.259, Lemma 5 0.271
