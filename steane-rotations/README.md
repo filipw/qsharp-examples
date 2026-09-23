@@ -27,8 +27,10 @@ angles cancel when both rounds give the same syndrome class.
 Two consequences of Eqs. 22 and 23 that the demo makes visible: at θ = π/4 the trivial
 syndrome (probability 9/16) gives φ_t = −π/4 and every nontrivial one gives 3π/4 = π − π/4, so
 one round of transversal T is a logical T† up to a heralded Z̄ (though not a fault-tolerant one:
-with dephasing the nontrivial branch is where the errors go, q_n = 0.23 against q_t = 0.016 at
-p = 0.02), and at θ = π/2 the trivial syndrome is certain with φ_t = −π/2, which is
+with dephasing most of the error lands in the nontrivial branch, q_n = 0.23 against
+q_t = 0.016 at p = 0.02, but even q_t ≈ 7p/9 is first order in p, since a single flip on the
+qubit the rotation flagged cancels its syndrome and hides a Z̄), and at θ = π/2 the trivial
+syndrome is certain with φ_t = −π/2, which is
 Rz(π/2)^⊗7 ∝ S^⊗7 = S̄†, the logical phase gate the code already had transversally.
 
 ## What the demo does
@@ -52,7 +54,8 @@ inputs after the rotation and the dephasing. Python traces out the environment, 
 data register onto each of the eight syndromes with the stabilizer projectors, applies the
 correction, restricts to the code space and inverts the four input/output pairs into the 2 × 2
 logical channel of that branch. That gives pₛ, ηₛ, φₛ, qₛ, the leakage out of the code space
-and how far the branch is from a pure Z rotation, with no formula from the paper involved.
+and how far the branch is from the form "Z rotation followed by dephasing" (populations kept,
+coherence multiplied by one complex factor), with no formula from the paper involved.
 `SimOneRound` and `SimTwoRounds` do the same with the syndrome measured and corrected inside
 Q#, and Python checks that the dumped branch is the projected one.
 
@@ -104,8 +107,12 @@ belong to a syndrome class of probability 0.
 forms), with the tomography values from 12 × 5000 shots at p = 0.02. At θ = 0 the trivial
 branch dephases at 7p³ (one of the seven weight-three logical Z operators passes undetected)
 and a nontrivial one at about 3p (the three weight-two errors with the same syndrome are
-miscorrected); the trivial-branch points are 2σ upper bounds, as 5000 shots per setting do not
-resolve q_t ≲ 10⁻².
+miscorrected). The third order is special to θ = 0: once the rotation itself puts weight
+p_n = (1 − cos 4θ)/32 on every nontrivial syndrome, one flip on the flagged qubit cancels it and
+leaves a trivial syndrome over R_Z(3θ) instead of R_Z(φ_t), so the trivial branch dephases at
+first order, q_t ≈ 7p·p_n(1 − cos(3θ − φ_t))/(2p_t) (7p/9 at θ = π/4). At p = 0.02 that term
+overtakes 7p³ at θ ≈ 0.04π. The trivial-branch points are 2σ upper bounds, as 5000 shots per
+setting do not resolve q_t ≲ 10⁻².
 **(B)** Two rounds, +θ then −θ, at p = 0.02: the total angle per syndrome pair from shots
 against the exact composition (solid) and the ideal φ_{s1}(θ) − φ_{s2}(θ) (dashed). The two
 equal-syndrome pairs stay at zero, the trivial–nontrivial pairs rotate by ±(3θ − φ_t) less the
@@ -166,7 +173,8 @@ Requires the `qdk` package, numpy and matplotlib (all in the root `requirements.
    20–23 and the half-angle form tan(φ_t/2) = −(7c⁴s³ + s⁷)/(c⁷ + 7c³s⁴) with c = cos(θ/2),
    s = sin(θ/2); the θ = π/4 and θ = π/2 points; φ_t/θ³ → −7/4.
 5. With dephasing, pₛ, φₛ, qₛ match Eqs. 14–17 for p up to 0.1; q_t ∝ p³ and q_n ≈ 3p at
-   θ = 0; φₛ(−θ) = −φₛ(θ).
+   θ = 0, while at θ = π/8 and π/4 q_t is first order in p with the single-flip coefficient
+   7p_n(1 − cos(3θ − φ_t))/(2p_t); φₛ(−θ) = −φₛ(θ).
 6. Ramsey fringes, the tomography angle and the two-round Bloch vectors and pair rates from
    shots are within 3σ of the exact channel.
 7. Two rounds from 21-qubit dumps: shots with the same first syndrome leave the same state,

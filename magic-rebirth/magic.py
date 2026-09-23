@@ -239,7 +239,8 @@ def thresholds(alpha: float, n: int, eta: float = 1.0) -> tuple[float, float, fl
     """(gamma_-, gamma_+, gamma_e) for the cat alpha|0^n> + beta|1^n> under amplitude damping,
     optionally composed with a phase flip of strength p, eta = (1 - 2p)^2 (Appendix D):
     gamma_+ = 1 - eta r^{2/n}, gamma_e = eta r^{2/n}, gamma_- the root of P_0 = c.
-    gamma_- is NaN when there is no stabilizer window (r >= eta^{n/2})."""
+    gamma_- is NaN when the dephased cat is already a stabilizer mixture at gamma = 0
+    (r >= eta^{n/2}), so there is no finite death; all three are NaN for r >= 1."""
     beta = np.sqrt(1 - alpha**2)
     r = alpha / beta
     if r >= 1:                                   # no stabilizer window at all (Theorem 1)

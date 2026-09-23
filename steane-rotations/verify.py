@@ -157,7 +157,18 @@ def main() -> int:
     check("theta = 0: the trivial branch dephases at third order in p (a weight-3 logical error), the nontrivial one at first order (about 3p)",
           abs(qt[1] / qt[0] - 8) < 0.5 and abs(qt[2] / qt[1] - 8) < 0.5 and abs(qn[0] / 0.005 - 3) < 0.1,
           f"q_t = {qt[0]:.2e}, {qt[1]:.2e}, {qt[2]:.2e} (ratios {qt[1] / qt[0]:.2f}, {qt[2] / qt[1]:.2f}); q_n / p = {qn[0] / 0.005:.3f}, {qn[1] / 0.01:.3f}, {qn[2] / 0.02:.3f}")
-    odd = max(st.angle_diff(st.exact_channel(-th, 0.02, s).angle, -st.exact_channel(th, 0.02, s).angle) for th in (0.2, 0.5, 0.7) for s in (0, 1))
+    # At theta != 0 the rotation itself puts weight p_n on every nontrivial syndrome j, and one flip on
+    # qubit j cancels it: a trivial syndrome over R_Z(3 theta) instead of R_Z(phi_t). Mixing the two
+    # rotations with relative weight 7 p p_n / p_t dephases the trivial branch at first order in p.
+    lin = {}
+    for th in (np.pi / 8, np.pi / 4):
+        pred = 7 * st.ideal_prob(th, False) * (1 - np.cos(3 * th - st.ideal_angle(th, True))) / (2 * st.ideal_prob(th, True))
+        lin[th] = ([st.exact_channel(th, p, 0).dephasing / p for p in (1e-5, 2e-5)], pred)
+    check("theta > 0: the trivial branch dephases at first order in p too, q_t / p -> 7 p_n (1 - cos(3 theta - phi_t)) / (2 p_t) "
+          "(a flip on the qubit the rotation flagged cancels its syndrome)",
+          all(abs(r / pred - 1) < 1e-3 for rs, pred in lin.values() for r in rs),
+          ", ".join(f"theta = {th / np.pi:.3f} pi: q_t / p = {rs[0]:.5f}, {rs[1]:.5f} at p = 1e-5, 2e-5 (predicted {pred:.5f})" for th, (rs, pred) in lin.items()))
+    odd =max(st.angle_diff(st.exact_channel(-th, 0.02, s).angle, -st.exact_channel(th, 0.02, s).angle) for th in (0.2, 0.5, 0.7) for s in (0, 1))
     check("odd symmetry phi_s(-theta) = -phi_s(theta)", odd < 1e-10, f"max |diff| = {odd:.1e}")
 
     print("\n6. shots against the exact channel")

@@ -11,7 +11,7 @@ from __future__ import annotations
 import sys
 
 import numpy as np
-import qsharp
+from qdk import code, qsharp
 
 import channels as ch
 import driver
@@ -52,14 +52,14 @@ def main() -> int:
     exact = ham.exact_evolved_state(ham.dense_hamiltonian(terms, coeffs, N), TIME, psi0)
 
     print("\n1. state preparation")
-    got = driver.run_states(qsharp.code.Main.SimInputState, 1, N, angles)[0]
+    got = driver.run_states(code.Main.SimInputState, 1, N, angles)[0]
     check("PrepareInput == numpy mirror", abs(abs(np.vdot(psi0, got)) - 1) < TOL,
           f"|<numpy|Q#>| = {abs(np.vdot(psi0, got)):.14f}")
 
     print("\n2. product formulas: Q# state == numpy mirror, all orders")
     pf = ch.ProductFormula(P, coeffs)
     for order, steps in ((1, 1), (2, 3), (4, 2)):
-        st = driver.run_states(qsharp.code.Main.SimTrotter, 1, N, angles, q_all, c_all, TIME, order, steps)[0]
+        st = driver.run_states(code.Main.SimTrotter, 1, N, angles, q_all, c_all, TIME, order, steps)[0]
         ref = pf.evolve(order, TIME, steps) @ psi0
         check(f"order {order}, r={steps}", abs(abs(np.vdot(ref, st)) - 1) < TOL,
               f"|<numpy|Q#>| = {abs(np.vdot(ref, st)):.14f}")
@@ -81,7 +81,7 @@ def main() -> int:
     check("direct == dense == squared", diff < 1e-10, f"max |diff| = {diff:.1e}")
     samples = 300
     rho_q = qd.apply(rho0, qd.lam * TIME / samples, samples)
-    states = driver.run_states(qsharp.code.Main.SimQDrift, 96, N, angles, q_all, c_all, TIME, samples, seed_base=4242)
+    states = driver.run_states(code.Main.SimQDrift, 96, N, angles, q_all, c_all, TIME, samples, seed_base=4242)
     mc_check("Q# qDRIFT == exact channel", states, rho_q, exact)
     errs = [ch.trace_distance(qd.apply(rho0, qd.lam * TIME / n, n), exact) for n in (200, 800, 3200)]
     slope = -np.polyfit(np.log([200, 800, 3200]), np.log(errs), 1)[0]
@@ -93,25 +93,25 @@ def main() -> int:
         # m = 0 empties every B-segment, so the composite is a deterministic nest of
         # A-factors; Q# and numpy must then agree exactly, which pins the outer/inner
         # recursion and its gate order.
-        st = driver.run_states(qsharp.code.Main.SimComposite, 1, N, angles, q_a, c_a, q_b, c_b, TIME, order, steps, 0)[0]
+        st = driver.run_states(code.Main.SimComposite, 1, N, angles, q_a, c_a, q_b, c_b, TIME, order, steps, 0)[0]
         rho_det = comp.evolve(rho0, order, TIME, steps, 0)
         ov = np.real(st.conj() @ rho_det @ st)
         check(f"order {order} skeleton (m=0)", abs(ov - 1) < TOL, f"<Q#|rho_numpy|Q#> = {ov:.14f}")
     for order, steps, m in ((2, 2, 6), (4, 1, 4)):
         rho_c = comp.evolve(rho0, order, TIME, steps, m)
-        states = driver.run_states(qsharp.code.Main.SimComposite, 96, N, angles, q_a, c_a, q_b, c_b, TIME, order, steps, m, seed_base=777)
+        states = driver.run_states(code.Main.SimComposite, 96, N, angles, q_a, c_a, q_b, c_b, TIME, order, steps, m, seed_base=777)
         mc_check(f"order {order}, r={steps}, m={m}: Q# == exact channel", states, rho_c, exact)
 
     print("\n6. gate accounting == qsharp.logical_counts")
-    prep = qsharp.logical_counts(qsharp.code.Main.EstInputState, N, angles)["rotationCount"]
+    prep = qsharp.logical_counts(code.Main.EstInputState, N, angles)["rotationCount"]
     w_all = [ham.pauli_weight(t) for t in terms]
     for order, steps in ((2, 3), (4, 2)):
-        got = qsharp.logical_counts(qsharp.code.Main.EstTrotter, N, angles, q_all, c_all, TIME, order, steps)["rotationCount"] - prep
+        got = qsharp.logical_counts(code.Main.EstTrotter, N, angles, q_all, c_all, TIME, order, steps)["rotationCount"] - prep
         exp_ = ch.trotter_cost(order, steps, w_all)[0]
         check(f"Trotter order {order}, r={steps}", got == exp_, f"Q# {got} vs formula {exp_}")
     qb = ch.QDriftChannel(P[K:], coeffs[K:])
     for order, steps, m in ((2, 3, 5), (4, 2, 3)):
-        got = qsharp.logical_counts(qsharp.code.Main.EstComposite, N, angles, q_a, c_a, q_b, c_b, TIME, order, steps, m)["rotationCount"] - prep
+        got = qsharp.logical_counts(code.Main.EstComposite, N, angles, q_a, c_a, q_b, c_b, TIME, order, steps, m)["rotationCount"] - prep
         exp_ = ch.composite_cost(order, steps, m, w_all[:K], w_all[K:], qb.probs)[0]
         check(f"composite order {order}, r={steps}, m={m}", got == exp_, f"Q# {got} vs formula {exp_}")
 

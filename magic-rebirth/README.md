@@ -1,7 +1,9 @@
 # Sudden death of entanglement, rebirth of magic — in Q#
 
 A Q# demo of *Sudden death of entanglement, rebirth of magic* (Chenfeng Cao —
-[arXiv:2605.22603](https://arxiv.org/abs/2605.22603)).
+[arXiv:2605.22603](https://arxiv.org/abs/2605.22603)). Equation numbers here and in the code
+follow the arXiv HTML version, which numbers the appendix equations on from the main text;
+the PDF labels them A1–K28 instead. Theorem, proposition and corollary numbers agree.
 
 ## The claim
 
@@ -21,10 +23,18 @@ magic ℛ = 1 + 2 max{0, c − P₀, c − Pₙ} (Theorems 1 and 4). Along the t
 - entanglement dies, across every bipartition at once, at γₑ = r^{2/n} (Proposition 2);
 - magic is reborn at γ₊ = 1 − r^{2/n} (Eq. 4) and stays until the endpoint |0ⁿ⟩ at γ = 1.
 
-So γₑ + γ₊ = 1 for every n (Eq. 8). The paper traces this reflection to the Stinespring
-dilation of amplitude damping: the environment is left in the damped state at the
-complementary strength, ρ_E(γ) = ρ_S(1 − γ) (Eq. 9), so the environment register becomes
-entangled at exactly the damping strength where the system's magic returns. Three
+So γₑ + γ₊ = 1 for every n (Eq. 8). The order in which the three thresholds come depends on
+α and n (the three regimes of Corollary 1, see the table below). The paper reads the
+reflection off the Stinespring dilation of amplitude damping: the environment is left in the
+damped state at the complementary strength, ρ_E(γ) = ρ_S(1 − γ) (Eq. 9), so the environment
+register becomes entangled at 1 − γₑ, which is where the system's magic returns. The duality
+by itself maps entanglement to entanglement and magic to magic; that the system's rebirth
+facet c = Pₙ is crossed exactly where the environment's partial-transpose minor is, is a
+separate fact (the facet–minor mirror of Appendix C). Proposition 3 gives the general
+condition, a coherence profile S(γ) = λ(γ)²/(1 − γ) that is symmetric at the threshold. A
+fixed-strength phase flip after the damping satisfies it too (S ≡ (1 − 2p)²), although that
+channel's environment is no damped copy of the input, and `verify.py` checks that the
+identity survives there. Three
 consequences the demo also covers: the reborn magic is nonlocal (every marginal is diagonal)
 yet parity-syndrome extraction concentrates it onto one qubit with no loss of expected
 robustness (Theorem 3) and a yield of at most α²/2 per register (Eq. 23); pure stabilizer
@@ -36,8 +46,10 @@ and with concurrent dephasing the rebirth survives if and only if T₂ > T₁ (T
 
 **Circuits.** `src/Damping.qs` prepares the cat and applies amplitude damping as its
 canonical Stinespring isometry (Eq. 83): a controlled Ry from each system qubit onto a fresh
-environment qubit, then a CNOT back, |1⟩|0⟩_E ↦ √(1−γ)|1⟩|0⟩_E + √γ|0⟩|1⟩_E. The QDK only
-ships Pauli noise, so this is how a non-unital channel is simulated, and it is the natural
+environment qubit, then a CNOT back, |1⟩|0⟩_E ↦ √(1−γ)|1⟩|0⟩_E + √γ|0⟩|1⟩_E. The noise
+models `qsharp.run` adds to a Q# program are Pauli channels (plus qubit loss), and the QDK's
+Kraus-operator density-matrix simulator (`qdk.simulation.DensityMatrixSimulator`) does not
+execute Q# code, so the non-unital channel is written as a circuit. It is also the natural
 choice here: the joint 2n-qubit state is dumped and Python traces out the environment to get
 the system, or the system to get the environment. Dephasing is dilated the same way (an Ry on
 an ancilla, then a CZ). 16 qubits at n = 8, milliseconds per state.
@@ -87,10 +99,13 @@ reflected about γ = 1/2, to 1.4 × 10⁻¹⁵.
 | 6 | 0.3176 | 0.3200 | 0.6800 | 1.000000 | 0.00234 | III |
 | 8 | 0.2511 | 0.2511 | 0.7489 | 1.000000 | 0.000030 | III |
 
-α = 0.3. The measured γₑ agrees with r^{2/n} to 1e‑12 at every n; the sum γₑ + γ₊ and the
+α = 0.3. Regimes I–III are the paper's Corollary 1, and since their boundaries move with n
+this one α crosses all three: at n = 2 entanglement dies before magic does (I), at n = 3 magic
+dies first and is reborn only after entanglement is gone (II, the order of panel A), and from
+n = 4 on magic is reborn while the state is still entangled (III). Panel B labels every n with
+its regime. The measured γₑ agrees with r^{2/n} to 1e‑12 at every n; the sum γₑ + γ₊ and the
 environment's thresholds (reborn at γₑ, entangled from γ₊) hold to the same precision at all
-21 (n, α) pairs. Regimes I–III are the paper's Corollary 1 (entanglement dies before magic;
-magic dies first but is reborn only after entanglement is gone; rebirth while still entangled).
+21 (n, α) pairs.
 
 ![extraction](results/extraction.png)
 
@@ -99,7 +114,12 @@ post-selected shots on top. Each trajectory starts at the pure cat (bottom right
 stabilizer octahedron at γ₋, leaves it at γ₊ and ends at |0⟩. The reborn branch reaches
 |x| + |z| = 1.02, 1.09 and 1.28 for n = 2, 4, 6: above the |H⟩-type distillation threshold
 1.015 for all three, and above the |T⟩-type threshold 3/√7 = 1.134 from n = 6 on, which is
-Fig. 5 of the paper. The acceptance probability is P₀ + Pₙ (≥ α² at every n and γ), the
+Fig. 5 of the paper. For scale, a single qubit damped from |+⟩ (dashed gray) already reaches
+x + z = 5/4 at γ = 3/4 (Eq. 24), so the collective route earns its keep through yield and
+quality (x + |z| → √2 as n grows), not by being the only way into the |T⟩-type window. And at
+α = 0.2 regime III starts at n = 5 (n > log₂(α⁻² − 1)), so the n = 6 peak, at γ ≈ 0.52 below
+γₑ ≈ 0.59, is extracted from a state that is still entangled; for n = 2 and 4 the whole
+reborn branch is fully separable. The acceptance probability is P₀ + Pₙ (≥ α² at every n and γ), the
 shots reproduce it and the Bloch vector within their error bars, and the expected robustness
 on the reborn branch peaks at 0.0200, 0.0191, 0.0199 at the sampled points against the bound
 α²/2 = 0.02. **(B)** Stabilizer inputs under the same damping, robustness by LP. |Φ⁺⟩ leaves

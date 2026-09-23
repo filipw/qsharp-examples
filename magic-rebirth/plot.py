@@ -109,7 +109,11 @@ def figure_rebirth(curves, thresholds, witness, meta, lines):
     ax.plot(ns, [r["g_e"] for r in rows], "o", color=RED, ms=6, mec=SURF, mew=0.6, label="γₑ measured")
     ax.plot(ns, [r["g_sum"] for r in rows], "s", color=INK2, ms=5, mfc=SURF, label="γₑ + γ₊ measured")
     ax.axhline(1, color=INK3, lw=0.8)
-    ax.set_xlabel("qubits n", color=INK2, fontsize=9.5)
+    # The order of the three thresholds depends on alpha and n (Corollary 1): I gamma_e < gamma_- < gamma_+,
+    # II gamma_- < gamma_e < gamma_+, III gamma_- < gamma_+ < gamma_e (rebirth while still entangled).
+    for r in rows:
+        ax.text(r["n"], 0.07, r["regime"], color=INK2, fontsize=7.5, ha="center", va="center")
+    ax.set_xlabel("qubits n   (regime: order of γ₋, γₑ, γ₊, Corollary 1)", color=INK2, fontsize=9.5)
     ax.set_ylabel("damping strength γ", color=INK2, fontsize=9.5)
     ax.set_ylim(0, 1.5)
     ax.set_title(f"α = {alpha}: γₑ + γ₊ = 1 for every n", color=INK, fontsize=11, loc="left", fontweight="bold")
@@ -190,6 +194,11 @@ def figure_extraction(curves, thresholds, extraction, stab, channel, chth, meta,
         ez = col(extraction, "z", n=n, alpha=alpha)
         ax.errorbar(ex, ez, xerr=2 * col(extraction, "se_x", n=n, alpha=alpha), yerr=2 * col(extraction, "se_z", n=n, alpha=alpha),
                     fmt="s", ms=3.5, mfc=SURF, mec=c, ecolor=c, elinewidth=0.9, capsize=1.5, label=f"n = {n}, post-selected shots (±2σ)")
+    # The one-qubit baseline (Eq. 24): |+> damped on its own is (x, z) = (sqrt(1 - gamma), gamma), with
+    # x + z = 5/4 at gamma = 3/4, already inside the |T>-type window.
+    gb = np.linspace(0, 1, 200)
+    ax.plot(np.sqrt(1 - gb), gb, color=INK3, lw=1.1, ls=(0, (4, 2.5)), label="|+⟩ damped alone, x + z ≤ 5/4 (Eq. 24)")
+    ax.plot(0.5, 0.75, "D", ms=3.5, color=INK3, mec=SURF)
     ax.annotate("γ = 0", (col(curves, "x", n=2, alpha=alpha)[0], col(curves, "z", n=2, alpha=alpha)[0]), textcoords="offset points", xytext=(4, -10), fontsize=7.5, color=INK2)
     ax.annotate("γ = 1", (0, 1), textcoords="offset points", xytext=(4, -10), fontsize=7.5, color=INK2)
     ax.set_xlim(-0.6, 1.1)
@@ -209,6 +218,14 @@ def figure_extraction(curves, thresholds, extraction, stab, channel, chth, meta,
         lines.append(f"  n={n}, reborn branch (gamma > {gp:.3f}): best decoded quality |x|+|z| = {max(r['exact_quality'] for r in rows):.3f} "
                      f"(H-type distillable above 1.015, T-type above 1.134); best yield at the sampled points {max(r['yield_'] for r in rows):.4f}, "
                      f"the paper's maximum alpha^2/2 = {alpha**2 / 2:.4f}")
+    for n in ns:
+        th = [r for r in thresholds if r["n"] == n and abs(r["alpha"] - alpha) < 1e-9][0]
+        g = col(curves, "gamma", n=n, alpha=alpha)
+        q = np.abs(col(curves, "x", n=n, alpha=alpha)) + np.abs(col(curves, "z", n=n, alpha=alpha))
+        i = int(np.argmax(np.where(g > th["g_plus"], q, -np.inf)))
+        lines.append(f"  n={n}, exact curve: best |x|+|z| on the reborn branch {q[i]:.4f} at gamma = {g[i]:.4f}, where the joint state is "
+                     f"{'still entangled' if g[i] < th['g_e'] else 'fully separable'} (gamma_e = {th['g_e']:.4f}, regime {th['regime']})")
+    lines.append("  one qubit, |+> damped alone: x + z peaks at 5/4 at gamma = 3/4 (Eq. 24), already above 3/sqrt7 = 1.134")
 
     # (B) stabilizer inputs: generators and insulators
     ax = axes[1]

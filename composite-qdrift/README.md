@@ -11,8 +11,9 @@ largest terms. The paper proves that simulating e^{−iHt} to trace-distance err
 
   **G = Θ( min₀≤K≤L [ K·t + t²·λ_K²/ε ] )**  two-qubit gates (single-qubit gates free),
 
-where the lower bound is a worst case over Hamiltonians with those term norms (Theorem 1)
-and the upper bound holds for all of them: the Hagan–Wiebe composite channel — high-order
+where the lower bound is a worst case over Hamiltonians with those term norms (Theorem 1;
+the hard instances are local classical Hamiltonians, piecewise constant in time once t is
+large) and the upper bound holds for all of them: the Hagan–Wiebe composite channel — high-order
 Trotterization of the K largest terms, qDRIFT on the remaining tail, with K chosen
 optimally — reaches the minimum up to a (t/ε)^{o(1)} factor. Two familiar algorithms are
 the endpoints of the same minimisation: K = L is plain Trotter (cost L·t, no 1/ε term),
@@ -28,7 +29,9 @@ The objective has two consequences one can measure:
    itself write out this exponent).
 2. **The gate count is polynomial in 1/ε,** G ∝ ε^{−1/(2α−1)} by the same calculation, even though query-model
    methods advertise log(1/ε) — the paper's point being that the L-dependence of a
-   block encoding is not an artefact that can be optimised away.
+   block encoding is not an artefact that can be optimised away. The two statements meet
+   at K* = L: log(1/ε) accuracy remains available, at O(L(t + log 1/ε)) gates, to whoever
+   pays for all L terms, and the polynomial regime is the one where K*(ε) < L.
 
 This repo builds power-law Hamiltonians on 6 qubits, implements the composite channel in
 Q#, sweeps the cut K, and measures both consequences with an exact error metric.
@@ -62,14 +65,16 @@ case, which is ≥ this.
 an `Rzz` inside a `SpreadZ` CNOT ladder, which the resource estimator counts as 2(w−1)
 CNOTs (`Rzz` itself is lowered to `cx, rz, cx`; checked in the QDK source), and that is
 the count used here. On hardware with a native `Rzz` the same exponential is 2w−3
-two-qubit gates. For this term pool the difference is a uniform factor of about 1.4 across
-every strategy, so it moves the frontiers together and changes neither the ratios nor the
-fitted exponents. Single-qubit rotations are free. Rotation counts are also recorded and
-cross-checked against `qsharp.logical_counts`. For the randomized parts the two-qubit
-count is the expectation over the sampled terms.
+two-qubit gates (w ≥ 2). For this term pool the difference is a factor between 1.33 and 1.40
+depending on the strategy (1.38 for Trotter over all 400 terms, 1.34 for qDRIFT, whose samples
+favour the heavy terms), so it moves the ratios below by a few percent and the fitted exponents
+hardly at all. Single-qubit rotations are free. Rotation counts are also recorded and
+cross-checked against `qsharp.logical_counts` (which does not list CNOTs). For the randomized
+parts the two-qubit count is the expectation over the sampled terms.
 
 **The sweep.** For every α: K = L with orders 2/4 and r up to 128; K = 0 with N up to
-10⁶; and K ∈ {1, 2, 4, …, 256} with outer/inner order 2 or 4, r ∈ {1…16}, N_B ∈ {K/4, K, 4K}.
+10⁶; and K ∈ {1, 2, 4, …, 256} with outer/inner order 2 or 4, r ∈ {1…16},
+N_B ∈ {max(1, K/4), K, 4K}.
 Everything is exact — no shots, no error bars.
 
 ## Results
@@ -108,14 +113,15 @@ Fitted G ∝ ε^{−p} inside the window:
 | 3.0 | **0.56** | 0.22 (limit 0.20) | **0.63** (limit 0.60) |
 
 The dotted theory line in the figure — Hagan–Wiebe's cost Υ(ΥL_A + N_B) with r ∝ (t/ε)^{1/2}
-for order 2, scaled by one constant — lies on the measured envelope across the whole
-window, for all three α. The dashed line, the paper's idealised objective, is far too
+for order 2, scaled by one constant — follows the measured envelope across the whole
+window, for all three α, with fitted exponents within 0.07 of the measured ones. The dashed
+line, the paper's idealised objective, is far too
 steep. The reason is not a flaw in the theorem: the paper's Trotter term is
 K·t·(t/ε)^{o(1)}, the o(1) being the exponent of an order-2p formula taken to p → ∞. A
 real implementation picks p, and the envelope here is built almost entirely from order-2
-configurations, whose (t/ε)^{1/2} is anything but small. Carrying that factor through the
-same minimisation gives p = (1 − 1/2p)/(2α−1) + 1/2p, and that is what the measurement
-returns.
+configurations (69 of its 72 points inside the windows), whose (t/ε)^{1/2} is anything but
+small. Carrying that factor through the same minimisation gives
+p = (1 − 1/2p)/(2α−1) + 1/2p, and that is, to within 0.07, what the measurement returns.
 
 So the demo confirms the *form* of the bound and its consequences, and shows concretely
 how much of the exponent ε^{−1/(2α−1)} is asymptotic in the Trotter order.
@@ -130,11 +136,17 @@ Fitted K ∝ ε^{−q} for the measured cheapest split, against the two versions
 | 2.0 | 0.31 | 0.35 | 0.20 |
 | 3.0 | 0.27 | 0.21 | 0.15 |
 
-The magnitude of the measured K* sits between the two predictions at every ε (the
-idealised objective over-predicts the cut, the Hagan–Wiebe upper-bound constants
-under-predict it), and its exponent lies between theirs. Where exactly to cut depends on
-the constants the bound drops — the ratio of the Trotter and qDRIFT prefactors — but the
-paper's Lemma 5 gets the power law and the order of magnitude right with no fitting.
+The magnitude of the measured cut sits between the two predictions, or one step of the
+power-of-two K grid above the idealised one (the idealised objective over-predicts the cut,
+the Hagan–Wiebe upper-bound constants under-predict it). The exponent does not follow them:
+for α = 1.5 and 2 it lies between the two predictions, but it falls by less than 20% from
+α = 1.5 to α = 3, while both predictions fall by a factor of two or more, and at α = 3 it
+is steeper than either. With nine values of K, spaced by factors of two, the measured q is
+the slope of a coarse staircase, so this is a statement about the order of magnitude of the
+cut and its motion rather than a test of 1/(2α − 1). Where exactly to cut depends on the
+constants the bound drops — the ratio of the Trotter and qDRIFT prefactors — and what the
+objective gets right with no fitting is that the cut moves as a power law of ε, and the
+order of magnitude of where it sits.
 
 ### Resource estimates (α = 2, `results/estimates_alpha2.0.txt`)
 
@@ -165,15 +177,15 @@ python3 plot.py            # figures + results/summary.txt
 python3 estimate_table.py  # fault-tolerant costs at matched accuracy (alpha 2 by default)
 ```
 
-Requires the `qsharp` Python package, numpy, matplotlib.
+Requires the `qdk` Python package, numpy, matplotlib (all in the root `requirements.txt`).
 
 ## Verification
 
 `verify.py` runs the following checks:
 
 1. Q#'s `PrepareInput` matches its numpy mirror to 14 digits.
-2. For orders 1, 2 and 4, the Q# product-formula state matches the numpy mirror to
-   14 digits. This covers the sign convention of Q#'s `Exp` (it applies e^{+iθP}, so the
+2. For orders 1, 2 and 4, the Q# product-formula state matches the numpy mirror to 10⁻¹²
+   or better. This covers the sign convention of Q#'s `Exp` (it applies e^{+iθP}, so the
    demo negates the angle), the amplitude bit order (qubit 0 is the most significant bit)
    and the Suzuki recursion (the same one as `TrotterArbitraryImplCA` in the QDK chemistry
    library).
@@ -183,7 +195,7 @@ Requires the `qsharp` Python package, numpy, matplotlib.
    exact channel's fidelity within Monte-Carlo error, and the exact trace distance falls
    as 1/N.
 5. With every qDRIFT segment emptied the composite reduces to a deterministic nest of
-   A-factors, and Q# and numpy agree to 14 digits for outer/inner orders 2 and 4. With
+   A-factors, and Q# and numpy agree to 10⁻¹³ at order 2 and 10⁻¹² at order 4. With
    samples on, the sampled Q# composite reproduces the exact channel within Monte-Carlo
    error.
 6. Rotation counts from the closed-form accounting equal `qsharp.logical_counts` for
@@ -191,10 +203,12 @@ Requires the `qsharp` Python package, numpy, matplotlib.
 
 Two QDK behaviours worth knowing about, both handled in the code:
 
-- `set_classical_seed` is re-applied at the start of every shot (`_qsharp.py` →
+- `set_classical_seed` is re-applied at the start of every shot (`qdk/_context.py` →
   `interpret.rs` → `qsc_eval::State::new`), so a multi-shot `qsharp.run` of a randomized
   simulator returns the same realization N times with a standard error of exactly zero.
-  `driver.run_states` runs one shot per seed instead.
+  `driver.run_states` runs one shot per seed instead. Passing `seed=s` to `qsharp.run`
+  would seed shot i with s + i, but for the classical and the measurement generator alike
+  (see the `magic-rebirth` and `steane-rotations` demos).
 - The resource estimator snaps rotation angles within `f64::EPSILON` of kπ/4 to
   Clifford/T (`counts.rs`). qDRIFT uses one angle for every gate, so a coincidence would
   zero its rotation count. The gate accounting here is closed-form and cross-checked

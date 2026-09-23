@@ -13,8 +13,8 @@ import os
 import sys
 
 import numpy as np
-import qsharp
-from qsharp.estimator import EstimatorParams, QubitParams, QECScheme
+from qdk import code, qsharp
+from qdk.estimator import EstimatorParams, QubitParams, QECScheme
 
 import driver
 import experiment as exp
@@ -39,11 +39,11 @@ def main(alpha: float) -> None:
     def call(row):
         n, t = exp.N_QUBITS, exp.TIME
         if row["family"] == "trotter":
-            return qsharp.code.Main.EstTrotter, (n, angles, q_all, c_all, t, row["order"], row["steps"])
+            return code.Main.EstTrotter, (n, angles, q_all, c_all, t, row["order"], row["steps"])
         if row["family"] == "qdrift":
-            return qsharp.code.Main.EstQDrift, (n, angles, q_all, c_all, t, row["samples"])
+            return code.Main.EstQDrift, (n, angles, q_all, c_all, t, row["samples"])
         K = row["K"]
-        return qsharp.code.Main.EstComposite, (n, angles, driver.qs_paulis(terms[:K]), list(coeffs[:K]),
+        return code.Main.EstComposite, (n, angles, driver.qs_paulis(terms[:K]), list(coeffs[:K]),
                                                driver.qs_paulis(terms[K:]), list(coeffs[K:]), t,
                                                row["order"], row["steps"], row["m"])
 

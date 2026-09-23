@@ -56,6 +56,10 @@ panel A extraction (alpha=0.2), post-selected shots vs exact:
   n=2, reborn branch (gamma > 0.796): best decoded quality |x|+|z| = 1.024 (H-type distillable above 1.015, T-type above 1.134); best yield at the sampled points 0.0200, the paper's maximum alpha^2/2 = 0.0200
   n=4, reborn branch (gamma > 0.548): best decoded quality |x|+|z| = 1.085 (H-type distillable above 1.015, T-type above 1.134); best yield at the sampled points 0.0191, the paper's maximum alpha^2/2 = 0.0200
   n=6, reborn branch (gamma > 0.411): best decoded quality |x|+|z| = 1.281 (H-type distillable above 1.015, T-type above 1.134); best yield at the sampled points 0.0199, the paper's maximum alpha^2/2 = 0.0200
+  n=2, exact curve: best |x|+|z| on the reborn branch 1.0245 at gamma = 0.8875, where the joint state is fully separable (gamma_e = 0.2041, regime I)
+  n=4, exact curve: best |x|+|z| on the reborn branch 1.0854 at gamma = 0.6425, where the joint state is fully separable (gamma_e = 0.4518, regime II)
+  n=6, exact curve: best |x|+|z| on the reborn branch 1.2808 at gamma = 0.5200, where the joint state is still entangled (gamma_e = 0.5888, regime III)
+  one qubit, |+> damped alone: x + z peaks at 5/4 at gamma = 3/4 (Eq. 24), already above 3/sqrt7 = 1.134
 panel B stabilizer inputs, LP robustness vs closed profiles (Eqs. 30, 33):
   Phi+     : max |LP - closed| = 2.4e-15, max R-1 = 0.2500
   Psi+     : max |LP - closed| = 1.8e-15, max R-1 = 0.0000

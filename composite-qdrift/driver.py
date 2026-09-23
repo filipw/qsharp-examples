@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 
 import numpy as np
-import qsharp
+from qdk import qsharp
 
 import hamiltonian as ham
 
@@ -29,7 +29,10 @@ def run_states(callable_, shots: int, *args, seed_base: int | None = None) -> np
     `qsharp.set_classical_seed` is re-applied at the start of *each* shot, so a
     multi-shot run of a randomized simulator would return the same realization
     `shots` times over. Randomized entry points therefore pass `seed_base` and get
-    one independent, individually reproducible realization per seed.
+    one independent, individually reproducible realization per seed. (Passing
+    `seed=s` to `qsharp.run` instead seeds shot i with s + i, but gives the classical
+    and the measurement generator the same seed; harmless here, since nothing is
+    measured, but the explicit per-shot classical seed keeps the two streams apart.)
     """
     if seed_base is None:
         results = qsharp.run(callable_, shots, *args, save_events=True)

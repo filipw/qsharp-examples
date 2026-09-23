@@ -29,7 +29,7 @@ import sys
 import time
 
 import numpy as np
-import qsharp
+from qdk import code
 
 import channels as ch
 import driver
@@ -86,7 +86,7 @@ def run_alpha(alpha: float, writer, log) -> None:
     for order, steps_list in TROTTER_STEPS.items():
         for steps in steps_list:
             t0 = time.time()
-            psi = driver.run_states(qsharp.code.Main.SimTrotter, 1, N_QUBITS, angles, q_all, c_all, TIME, order, steps)[0]
+            psi = driver.run_states(code.Main.SimTrotter, 1, N_QUBITS, angles, q_all, c_all, TIME, order, steps)[0]
             rot, twoq = ch.trotter_cost(order, steps, weights)
             emit("trotter", L, order, steps, 0, 0, rot, twoq, psi, t0)
 
