@@ -60,8 +60,9 @@ for k in (1, 2):                 # C^(2), then C^(4)
     print(f"C^({2 * k}) ~ {c:+.3f}")
 ```
 
-With q_m = 5 and the butterfly two sites along the same row (q_b = 7), this gives a C^(2)
-of about 0.8 and a C^(4) of about 0.15 for this seed. The 800 shots take under a minute. Before the
+With q_m = 5 and the butterfly two sites along the same row (q_b = 7), the exact values
+for this seed are C^(2) = 0.77 and C^(4) = 0.17, and 400 shots estimate each to about ±0.05.
+The 800 shots take under a minute. Before the
 butterfly's light cone reaches q_m, both correlators are exactly 1.
 
 ## Differences from the paper
@@ -72,5 +73,7 @@ butterfly's light cone reaches q_m, both correlators are exactly 1.
   slow-scrambling pattern, so a 12-qubit patch scrambles within about ten cycles.
 - Every qubit starts in |0⟩; the paper starts from a product state with q_m in |0⟩.
 - At these sizes Pauli insertion moves C^(4) more than C^(2), the direction the paper
-  reports, but C^(4) is still mostly diagonal. The paper's result that large-loop
-  interference dominates C^(4) is about 40-qubit circuits.
+  reports, but by how much depends on the circuit and on where the Paulis go, so one circuit
+  says little. Copenhagen's page measures it the paper's way, as the correlation across 16
+  circuits on a 10-qubit ladder, where 1 − ρ for C^(4) is only about 0.1. The paper's result
+  that large-loop interference dominates C^(4) is about 40-qubit circuits.

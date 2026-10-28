@@ -78,7 +78,7 @@ operation SearchStep(step : Int, register : Qubit[]) : Unit is Adj + Ctl {
 }
 
 /// The paper's initial state psi_in(x) = |x|^(-1/2) h(ln|x|), a Gaussian h in log-position,
-/// centred on the middle of the list, from amplitudes computed in TypeScript. It is even about
+/// centred on the middle of the list, from amplitudes the caller computes. It is even about
 /// x = 0, the boundary between the halves of the register, so PreparePureStateD prepares only
 /// the right half, on the low qubits (site M/2 + d for d = 0, 1, ...): half the amplitudes.
 /// A Hadamard on the top qubit then makes two copies, and flipping the low qubits when the top

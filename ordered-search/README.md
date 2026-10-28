@@ -16,9 +16,11 @@ the Farhi–Goldstone–Gutmann–Sipser polynomial program, was discovered by G
 demo is the first.
 
 One query is U_s = F† O₀ F O_s: the comparison oracle O_s (a sign flip for x ≥ s), then the
-sign function in momentum. Its eigenphase on the Mellin modes is θ(ω) = 2·atan(e^(−πω)), slope
-−π at ω = 0, so each query moves a packet that is Gaussian in log-position about π closer to
-the step in log-distance. The algorithm starts from such a packet at ln n + ln^(3/4) n with
+sign function in momentum. On the even Mellin modes |x|^(−1/2 + iω) its eigenphase is
+θ(ω) = 2·atan(e^(−πω)), slope −π at ω = 0, so each query moves an even packet that is Gaussian
+in log-position about π closer to the step in log-distance. On the odd modes the phase turns
+the other way and a packet moves away from the step, which is why the initial state is even
+about the middle of the list and why each query applies O_s first. The algorithm starts from such a packet at ln n + ln^(3/4) n with
 width ln^(1/2) n, makes Q = ⌈(ln n + 2 ln^(3/4) n)/π⌉ queries, measures the position and
 checks the answer with two classical comparisons, starting again if the check fails.
 
@@ -86,9 +88,13 @@ checks each candidate with two classical comparisons and repeats on a failure. L
 ## Differences from the paper
 
 - The discretisation: the paper's continuum algorithm, run on a finite ring. At n = 16 the
-  ring holds 89% of the initial state, and the success after Q = 3 queries is 0.69 on the
-  ring against 0.74 for the paper's operator on the line.
-- Small n only. At these sizes a packet moves about 2.3 rather than π per query, the success
-  probability is far from its asymptotic 1 − O(ln^(−1/2) n), and with checks and restarts the
-  search needs fewer queries on average than binary search only from about n = 2,000.
+  ring holds 89% of the initial state. For the middle target the success after Q = 3 queries
+  is 0.69 on the ring against 0.74 for the paper's operator on the line; averaged over all 16
+  targets it is 0.66 on the ring.
+- Small n only. At these sizes a packet moves about 2.3 rather than π per query, and the
+  success probability is far from its asymptotic 1 − O(ln^(−1/2) n). The paper gives no
+  finite-n comparison with binary search. Computed from its operator on the line (step at the
+  centre), the expected cost with two checks per attempt and restarts, (Q + 2)/P, drops below
+  ⌈log₂ n⌉ from about n = 230, except in a narrow band just below n = 1,024 where Q is about
+  to step up.
 - Neither the proofs nor the exact algorithm of Section 4.
