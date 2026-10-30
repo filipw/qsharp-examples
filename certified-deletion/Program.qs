@@ -5,16 +5,23 @@ import Std.Convert.*;
 import Std.Logical.*;
 import Std.Math.*;
 
+// A simplified version of the certified deletion scheme of Broadbent and Islam
+// (arXiv:1910.03551). It leaves out the extra one-time pad u, the privacy
+// amplification hash and the error correction of the full scheme, so it shows
+// the mechanics of the protocol but does not have its security: without u,
+// measuring every qubit in Z already leaks the message, and without the hash
+// a cheating Bob can trade a lower chance of passing the check for some of the
+// message bits.
 operation Main() : Unit {
     // in QDK 1.x the entrypoint cannot have parameters
     // we have to fake it by having hardcoded data that changes from run to run
     let message = 4;
     let decryptFlow = false; // switch to true if necessary
 
-    // we can reasonably only simulate this in one shot for messages up to 8 bits
-    let message_bitsize = BitSizeI(message);
-    Fact(message_bitsize < 8, "We can't simulate for messages of more than 8 bits");
+    // 16 qubits give 8 bits of r_z, so messages of up to 8 bits (0-255)
     let algorithm_bitsize = 16;
+    let message_bitsize = BitSizeI(message);
+    Fact(message_bitsize <= algorithm_bitsize / 2, "Messages longer than 8 bits don't fit the 8-bit pad r_z");
 
     Message($"Running the algorithm for message: {message}");
     Message("");
