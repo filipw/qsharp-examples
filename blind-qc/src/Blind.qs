@@ -1,12 +1,13 @@
 /// Blind quantum computation by measurement, after Song, Knörzer, Dalton, Wallraff and Besse
 /// (arXiv:2605.14656), whose protocol is Morimae and Fujii's (arXiv:1201.3966). A server makes a
 /// cluster state and hands it over, one node at a time; a client measures it at angles it never
-/// announces. Classical bits stay with the client: every `if` and every controlled correction
-/// below acts on a client qubit, and no outcome ever reaches a server qubit.
+/// announces. Classical bits stay with the client: every `if` on an outcome and every controlled
+/// correction below acts on a client qubit, and no outcome ever reaches a server qubit.
 ///
 /// The basis B(theta) is { |0> + e^(i theta)|1>, |0> - e^(i theta)|1> } / sqrt 2, outcome 0 for
 /// the + state. Measuring it is Rz(-theta), H, then a Z readout. In every cell below a client pulse
-/// Rz(x), H and a readout s apply X^s H Rz(x) to the server's logical qubit.
+/// Rz(x), H and a readout s apply X^s H Rz(x) to the server's logical qubit. (In maths s is always
+/// an outcome; in code `s` is the server's qubit.)
 import Std.Diagnostics.DumpMachine;
 import Std.Math.*;
 import Std.Random.DrawRandomDouble;
@@ -100,6 +101,7 @@ operation ZCell(s : Qubit, c : Qubit, noise : Rates) : Result {
 }
 
 /// Moves the server's qubit to the client's, which is in |0>: two CNOTs do what a SWAP would.
+/// `c` holds nothing of the client's here: it was reset, so this gate carries no angle back.
 operation HandOver(s : Qubit, c : Qubit, noise : Rates) : Unit {
     NoisyCNOT(s, c, noise);
     NoisyCNOT(c, s, noise);
