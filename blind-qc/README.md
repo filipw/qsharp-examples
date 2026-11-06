@@ -34,7 +34,8 @@ One file, with no entry point.
 - A statevector has no crosstalk, so a flat server state here is a theorem being displayed. It tests
   nothing about hardware.
 - The noise is a model at the paper's rates, not a reproduction of the device: no ZZ crosstalk, no
-  spread between qubits, no thermal relaxation. Where the idling goes is
-  this code's choice, because the paper doesn't say.
+  spread between qubits, no thermal relaxation, no reset error, and none of the paper's CPMG pulses
+  (reset here is a perfect `MResetZ`). Where the idling goes is this code's choice, because the
+  paper doesn't say.
 - The sign of a cell is the one in the paper's main text and Fig. 1c. Its Fig. 6a and Methods B write
   the opposite one.
