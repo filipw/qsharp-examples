@@ -112,7 +112,7 @@ def fig_frontiers(res: list[dict], t: float, meta: dict) -> None:
     fig.legend(handles, labels, loc="lower center", ncol=5 if len(res) >= 3 else 2, frameon=False,
                fontsize=8.5, labelcolor=INK2, bbox_to_anchor=(0.5, 0.0))
     fig.suptitle(f"Cost vs accuracy for $a_j \\propto j^{{-\\alpha}}$ on {meta['n_qubits']} qubits, "
-                 f"L = {meta['n_terms']}, t = {t}  —  measured frontiers (exact trace distance) vs the paper's objective",
+                 f"L = {meta['n_terms']}, t = {t}: measured frontiers (exact trace distance) vs the paper's objective",
                  color=INK, fontsize=12, x=0.01, ha="left", y=0.995)
     fig.tight_layout(rect=(0, 0.05 if len(res) >= 3 else 0.09, 1, 0.96))
     fig.savefig(os.path.join(RESULTS, "frontiers.png"), facecolor=SURF)

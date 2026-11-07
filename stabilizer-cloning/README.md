@@ -1,7 +1,7 @@
-# Cloning is as hard as learning for stabilizer states — measured in Q#
+# Cloning is as hard as learning for stabilizer states, measured in Q#
 
 A Q# demo of *Cloning is as Hard as Learning for Stabilizer States* (Bansal, Caro,
-Mahajan — [arXiv:2604.15269](https://arxiv.org/abs/2604.15269)).
+Mahajan, [arXiv:2604.15269](https://arxiv.org/abs/2604.15269)).
 
 ## The claim
 
@@ -32,7 +32,7 @@ comes from.
 `src/Main.qs` prepares an unknown stabilizer state from a random Clifford circuit, runs
 Bell difference sampling on four copies, and measures generators on one copy. Everything
 is Base-profile QIR, so it runs on the QDK's stabilizer simulator (`qdk.simulation.run_qir`
-with `type="clifford"`) — 4n = 512 qubits at n = 128 take milliseconds per shot.
+with `type="clifford"`): 4n = 512 qubits at n = 128 take milliseconds per shot.
 
 For n from 4 to 128, 200 random states each:
 
@@ -73,8 +73,8 @@ For n from 4 to 128, 200 random states each:
   the paper's impossibility line is n/4, and both are straight lines: Θ(n), with a
   constant-factor gap of 16 between this particular learner and the bound.
 - Panel C is the proof. The distinguisher's advantage is a bump located at t = n whose
-  height does not depend on n — 0.27 measured, 0.271 from Lemma 5, against the paper's
-  bound of 0.144 — and that constant is the whole reason cloning cannot be cheaper than
+  height does not depend on n (0.27 measured, 0.271 from Lemma 5, against the paper's
+  bound of 0.144), and that constant is the whole reason cloning cannot be cheaper than
   learning here. Amplifying from t = n − 1 to n samples is exactly one sample too early,
   and Lemma 11 carries the same bound down to every smaller t.
 

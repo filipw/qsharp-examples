@@ -1,7 +1,7 @@
-# Continuous-angle logical rotations in the Steane code — in Q#
+# Continuous-angle logical rotations in the Steane code, in Q#
 
 A Q# demo of *Continuous-angle logical rotations in the Steane code* (Eric Huang, Daiwei Zhu,
-Matteo Ippoliti, Christopher Monroe, Michael J. Gullans —
+Matteo Ippoliti, Christopher Monroe, Michael J. Gullans,
 [arXiv:2608.20676](https://arxiv.org/abs/2608.20676)).
 
 ## The claim

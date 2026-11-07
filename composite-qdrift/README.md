@@ -1,7 +1,7 @@
 # Where to cut a Hamiltonian: measuring the Zlokapa–Allen–Harrow objective in Q#
 
 A Q# demo of the main result of *Optimal Lower Bounds for Hamiltonian Simulation*
-(Zlokapa, Allen, Harrow — [arXiv:2607.19852](https://arxiv.org/abs/2607.19852)).
+(Zlokapa, Allen, Harrow, [arXiv:2607.19852](https://arxiv.org/abs/2607.19852)).
 
 ## The claim
 
@@ -13,9 +13,9 @@ largest terms. The paper proves that simulating e^{−iHt} to trace-distance err
 
 where the lower bound is a worst case over Hamiltonians with those term norms (Theorem 1;
 the hard instances are local classical Hamiltonians, piecewise constant in time once t is
-large) and the upper bound holds for all of them: the Hagan–Wiebe composite channel — high-order
+large) and the upper bound holds for all of them: the Hagan–Wiebe composite channel (high-order
 Trotterization of the K largest terms, qDRIFT on the remaining tail, with K chosen
-optimally — reaches the minimum up to a (t/ε)^{o(1)} factor. Two familiar algorithms are
+optimally) reaches the minimum up to a (t/ε)^{o(1)} factor. Two familiar algorithms are
 the endpoints of the same minimisation: K = L is plain Trotter (cost L·t, no 1/ε term),
 K = 0 is plain qDRIFT (cost t²/ε, no L). A demo on one instance checks the upper-bound
 side: that the composite's cost follows the objective and is set by the minimisation over K.
@@ -28,7 +28,7 @@ The objective has two consequences one can measure:
    K* ∝ ε^{−1/(2α−1)} (the paper names power laws as the motivating case but does not
    itself write out this exponent).
 2. **The gate count is polynomial in 1/ε,** G ∝ ε^{−1/(2α−1)} by the same calculation, even though query-model
-   methods advertise log(1/ε) — the paper's point being that the L-dependence of a
+   methods advertise log(1/ε). The paper's point is that the L-dependence of a
    block encoding is not an artefact that can be optimised away. The two statements meet
    at K* = L: log(1/ε) accuracy remains available, at O(L(t + log 1/ε)) gates, to whoever
    pays for all L terms, and the polynomial regime is the one where K*(ε) < L.
@@ -43,9 +43,9 @@ costs O(1) two-qubit gates, as the gate model assumes), with |aⱼ| ∝ j^{−α
 α ∈ {1.5, 2, 3}, random signs, Σ|aⱼ| = 1, evolved for t = 2.
 
 **Simulators.** All three are the same Q# code at different K:
-- `TrotterEvolve` — Suzuki product formulas of order 2 and 4 over all L terms (K = L).
-- `QDriftEvolve` — Campbell's randomized first-order channel over all terms (K = 0).
-- `CompositeEvolve` — the Hagan–Wiebe channel exactly as the paper's Fact 3 uses it: an
+- `TrotterEvolve`: Suzuki product formulas of order 2 and 4 over all L terms (K = L).
+- `QDriftEvolve`: Campbell's randomized first-order channel over all terms (K = 0).
+- `CompositeEvolve`: the Hagan–Wiebe channel exactly as the paper's Fact 3 uses it: an
   outer order-2k Suzuki formula over the two "terms" A (largest K) and B (the rest), each
   A-factor implemented by an inner order-2k formula on A's terms, each B-factor by a
   qDRIFT segment of N_B samples.
@@ -75,7 +75,7 @@ parts the two-qubit count is the expectation over the sampled terms.
 **The sweep.** For every α: K = L with orders 2/4 and r up to 128; K = 0 with N up to
 10⁶; and K ∈ {1, 2, 4, …, 256} with outer/inner order 2 or 4, r ∈ {1…16},
 N_B ∈ {max(1, K/4), K, 4K}.
-Everything is exact — no shots, no error bars.
+Everything is exact: no shots, no error bars.
 
 ## Results
 
@@ -98,7 +98,7 @@ configuration swept (faint dots), with the Pareto frontier of each strategy. The
 | 3.0 | 49× → 17× (ε from 10⁻² to 10⁻⁵) | 7× → 195× |
 
 Inside the window neither endpoint is ever the cheapest. The advantage over Trotter
-shrinks as ε → 0 at fixed L — the cut K* creeps toward L and the objective flattens —
+shrinks as ε → 0 at fixed L (the cut K* creeps toward L and the objective flattens)
 and grows with α, because a steeper tail puts the "spectral weight" into fewer terms,
 which is exactly the regime Hagan–Wiebe identify as favourable.
 
@@ -112,8 +112,8 @@ Fitted G ∝ ε^{−p} inside the window:
 | 2.0 | **0.68** | 0.33 (limit 0.33) | **0.69** (limit 0.67) |
 | 3.0 | **0.56** | 0.22 (limit 0.20) | **0.63** (limit 0.60) |
 
-The dotted theory line in the figure — Hagan–Wiebe's cost Υ(ΥL_A + N_B) with r ∝ (t/ε)^{1/2}
-for order 2, scaled by one constant — follows the measured envelope across the whole
+The dotted theory line in the figure (Hagan–Wiebe's cost Υ(ΥL_A + N_B) with r ∝ (t/ε)^{1/2}
+for order 2, scaled by one constant) follows the measured envelope across the whole
 window, for all three α, with fitted exponents within 0.07 of the measured ones. The dashed
 line, the paper's idealised objective, is far too
 steep. The reason is not a flaw in the theorem: the paper's Trotter term is
@@ -144,7 +144,7 @@ for α = 1.5 and 2 it lies between the two predictions, but it falls by less tha
 is steeper than either. With nine values of K, spaced by factors of two, the measured q is
 the slope of a coarse staircase, so this is a statement about the order of magnitude of the
 cut and its motion rather than a test of 1/(2α − 1). Where exactly to cut depends on the
-constants the bound drops — the ratio of the Trotter and qDRIFT prefactors — and what the
+constants the bound drops (the ratio of the Trotter and qDRIFT prefactors), and what the
 objective gets right with no fitting is that the cut moves as a power law of ε, and the
 order of magnitude of where it sits.
 
@@ -171,7 +171,7 @@ Monte-Carlo samples; it is now the paper's trace distance, computed exactly.
 ## Running it
 
 ```bash
-python3 verify.py          # correctness checks — run this first (~1 min)
+python3 verify.py          # correctness checks, run this first (~1 min)
 python3 experiment.py      # the sweep, all three alpha (~55 min); or `python3 experiment.py 2.0`
 python3 plot.py            # figures + results/summary.txt
 python3 estimate_table.py  # fault-tolerant costs at matched accuracy (alpha 2 by default)

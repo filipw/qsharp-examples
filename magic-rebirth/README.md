@@ -1,6 +1,6 @@
-# Sudden death of entanglement, rebirth of magic — in Q#
+# Sudden death of entanglement, rebirth of magic, in Q#
 
-A Q# demo of *Sudden death of entanglement, rebirth of magic* (Chenfeng Cao —
+A Q# demo of *Sudden death of entanglement, rebirth of magic* (Chenfeng Cao,
 [arXiv:2605.22603](https://arxiv.org/abs/2605.22603)). Equation numbers here and in the code
 follow the arXiv HTML version, which numbers the appendix equations on from the main text;
 the PDF labels them A1–K28 instead. Theorem, proposition and corollary numbers agree.
@@ -81,7 +81,7 @@ vector and the acceptance rate (3 × 10 000 shots per point) against Eq. 19.
 ![rebirth](results/rebirth.png)
 
 **(A)** n = 2, α = 0.4, the paper's Regime II. Magic (blue) reaches zero at γ₋ = 0.324, stays
-zero on the gray window, and comes back at γ₊ = 0.564 — after entanglement (red) is gone for
+zero on the gray window, and comes back at γ₊ = 0.564, after entanglement (red) is gone for
 good at γₑ = 0.436. The window [0.324, 0.564] is the one the paper quotes. The circles are
 the two-setting witness from shots: it certifies magic at all 19 magic points at 2σ and never
 at the six points inside the window. **(B)** Thresholds against n at α = 0.3, from bisection

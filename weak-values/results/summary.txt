@@ -1,0 +1,27 @@
+panel A exact: 1505 (w, delta) points from Q# dumps; max |A_f - closed form| = 1.4e-10 (relative 2.7e-12), |A_n - closed form| = 3.2e-14, |P(f) - closed form| = 2.2e-15
+  w = 0.005  peak at delta* = 0.0100: largest reading S_z =   50.001, post-selection probability 5.00e-05; at delta = 0.1426: S_z = 6.966
+  w = 0.02   peak at delta* = 0.0400: largest reading S_z =   12.505, post-selection probability 7.99e-04; at delta = 0.1426: S_z = 6.494
+  w = 0.06   peak at delta* = 0.1199: largest reading S_z =    4.182, post-selection probability 7.15e-03; at delta = 0.1426: S_z = 4.119
+  w = 0.2    peak at delta* = 0.3947: largest reading S_z =    1.300, post-selection probability 7.39e-02; at delta = 0.1426: S_z = 0.824
+  w = 1      peak at delta* = 1.4350: largest reading S_z =    0.505, post-selection probability 4.91e-01; at delta = 0.1426: S_z = 0.082
+panel B: at delta = 2 atan(1/14) the reading is within 1% of 7 for w <= 0.0072 and within 10% for w <= 0.0239 (closed form, solved for w); max |Q# - closed form| = 8.0e-13, at the peak 3.2e-09
+  largest shift in units of 1/(2 sigma) (the Gaussian pointer's momentum width): 1.0000 at w = 0.001, 4.0000 at w = 2 (tends to 1 as w -> 0)
+panel C w = 0.01: seven distribution mean 0.2746 pointer widths = 13.732 dp
+panel C w = 0.01: peak distribution mean 1.0001 pointer widths = 50.005 dp
+Fig. 2 sweep, w = 0.06, 40000 shots per angle: worst |z| of the post-selected mean 1.30, discarded mean 1.87, post-selection rate 1.72 over 13 angles
+  delta = -1.571:  20076 post-selected (rate 0.5019, exact 0.5000), S_z =  -0.497 +- 0.030 (exact  -0.500, weak value  -0.500); discarded S_z = +0.538 +- 0.030
+  delta = -0.800:   6250 post-selected (rate 0.1562, exact 0.1541), S_z =  -1.122 +- 0.053 (exact  -1.163, weak value  -1.183); discarded S_z = +0.202 +- 0.023
+  delta = -0.400:   1741 post-selected (rate 0.0435, exact 0.0428), S_z =  -2.314 +- 0.093 (exact  -2.276, weak value  -2.467); discarded S_z = +0.123 +- 0.021
+  delta = -0.200:    501 post-selected (rate 0.0125, exact 0.0135), S_z =  -3.707 +- 0.156 (exact  -3.684, weak value  -4.983); discarded S_z = +0.051 +- 0.021
+  delta = -0.100:    232 post-selected (rate 0.0058, exact 0.0061), S_z =  -4.246 +- 0.331 (exact  -4.114, weak value  -9.992); discarded S_z = +0.023 +- 0.021
+  delta = -0.050:    162 post-selected (rate 0.0040, exact 0.0042), S_z =  -2.717 +- 0.519 (exact  -2.970, weak value -19.996); discarded S_z = +0.015 +- 0.021
+  delta = +0.000:    148 post-selected (rate 0.0037, exact 0.0036), S_z =  -0.763 +- 0.586 (exact  +0.000, weak value    -  ); discarded S_z = -0.025 +- 0.021
+  delta = +0.050:    160 post-selected (rate 0.0040, exact 0.0042), S_z =  +2.945 +- 0.460 (exact  +2.970, weak value +19.996); discarded S_z = +0.027 +- 0.021
+  delta = +0.100:    253 post-selected (rate 0.0063, exact 0.0061), S_z =  +4.327 +- 0.248 (exact  +4.114, weak value  +9.992); discarded S_z = -0.001 +- 0.021
+  delta = +0.200:    549 post-selected (rate 0.0137, exact 0.0135), S_z =  +3.705 +- 0.157 (exact  +3.684, weak value  +4.983); discarded S_z = -0.032 +- 0.021
+  delta = +0.400:   1763 post-selected (rate 0.0441, exact 0.0428), S_z =  +2.214 +- 0.092 (exact  +2.276, weak value  +2.467); discarded S_z = -0.075 +- 0.021
+  delta = +0.800:   6098 post-selected (rate 0.1525, exact 0.1541), S_z =  +1.106 +- 0.052 (exact  +1.163, weak value  +1.183); discarded S_z = -0.217 +- 0.023
+  delta = +1.571:  19878 post-selected (rate 0.4970, exact 0.5000), S_z =  +0.475 +- 0.029 (exact  +0.500, weak value  +0.500); discarded S_z = -0.491 +- 0.029
+the 7: delta = 0.14261, w = 0.01, 1000000 shots, 5224 post-selected (rate 0.00522 +- 0.00007, exact 0.00518); S_z = 6.764 +- 0.345, exact 6.866, weak value 7.000; -0.30 sigma from exact
+  discarded outcome: S_z = -0.0650 +- 0.0251 (exact -0.0357)
+  post-selected histogram against the exact distribution: chi^2 = 13.1 over 16 degrees of freedom, p = 0.664
