@@ -111,7 +111,7 @@ miscorrected). The third order is special to θ = 0: once the rotation itself pu
 p_n = (1 − cos 4θ)/32 on every nontrivial syndrome, one flip on the flagged qubit cancels it and
 leaves a trivial syndrome over R_Z(3θ) instead of R_Z(φ_t), so the trivial branch dephases at
 first order, q_t ≈ 7p·p_n(1 − cos(3θ − φ_t))/(2p_t) (7p/9 at θ = π/4). At p = 0.02 that term
-overtakes 7p³ at θ ≈ 0.04π. The trivial-branch points are 2σ upper bounds, as 5000 shots per
+overtakes 7p³ at θ ≈ 0.05π. The trivial-branch points are 2σ upper bounds, as 5000 shots per
 setting do not resolve q_t ≲ 10⁻².
 **(B)** Two rounds, +θ then −θ, at p = 0.02: the total angle per syndrome pair from shots
 against the exact composition (solid) and the ideal φ_{s1}(θ) − φ_{s2}(θ) (dashed). The two
